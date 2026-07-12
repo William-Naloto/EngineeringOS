@@ -5,7 +5,7 @@
 
 ## ⚠️ Do not write competencies manually
 
-Per [ADR 0015](../adr/0015-compiler-as-product.md): competencies are **compile inputs**, not hand-maintained IDE documentation.
+Per [ADR 0015](../adr/0015-canonical-knowledge-as-product.md): competencies are **compile inputs**, not hand-maintained IDE documentation.
 
 ```
 competencies/  →  ekl build  →  Cursor + Claude + AGENTS.md + …

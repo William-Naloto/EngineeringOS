@@ -1,25 +1,7 @@
-# Runtime Specification: Windsurf
+# Runtime Specification: Windsurf (deprecated)
 
-> **runtime_id:** `windsurf`  
-> **runtime_version:** 1.0.0-draft  
-> **eks_version:** 1.0
+> **Moved to:** [reference/windsurf/README.md](../../reference/windsurf/README.md)
 
-## Supported features
+Per EKL spec/reference separation, vendor-specific compilation targets live in `reference/`.
 
-| Feature | Supported | Output |
-|---------|-----------|--------|
-| Rules | Yes | `.windsurf/rules/` |
-| Workflows | Partial | From `workflow.*` nodes |
-| Memories | No native target | — |
-
-## Output mapping
-
-| EKS artifact | Windsurf output |
-|--------------|-----------------|
-| `agent.*` | Rule file |
-| `capability.*` | Rule file with orchestration |
-| `topic.*` | Rule file |
-
-## Compiler location
-
-`compilers/windsurf/`
+See [reference/windsurf/README.md](../../reference/windsurf/README.md).

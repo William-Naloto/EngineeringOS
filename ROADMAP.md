@@ -14,7 +14,7 @@
 **EKL** — Engineering Knowledge Language. An open engineering knowledge standard.
 
 ```
-Markdown  →  Parser  →  Canonical AST  →  Validator  →  Resolver  →  Compiler  →  Target
+Markdown  →  Parser  →  Canonical AST  →  Validator  →  Resolver  →  Optimizer (optional)  →  Compiler  →  Target
 ```
 
 Like OpenAPI → codegen. Like TypeScript → tsc. Like Terraform → provider.
@@ -51,7 +51,8 @@ Like OpenAPI → codegen. Like TypeScript → tsc. Like Terraform → provider.
 | [reference/](reference/) — vendor targets | ✅ |
 | ADR 0015 amended — Canonical Knowledge as Product | ✅ |
 | EKS → EKL rename | ✅ |
-| Implementation | ⏸ Paused until sign-off |
+| Implementation paused (Sprint 1A on hold) | ⏸ |
+| Review sign-off (resumes Sprint 1A) | ⏳ Pending |
 
 **Exit criteria:** Standards alignment reviewed and signed off. Then resume Sprint 1A.
 

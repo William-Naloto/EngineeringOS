@@ -4,12 +4,12 @@
 
 ## Purpose
 
-Transform resolved knowledge graph into runtime-specific output.
+Transform the resolved (or optimized) knowledge graph into runtime-specific output.
 
 ## Inputs
 
-- `resolved-graph.json`
-- `runtime/<target>/runtime-spec.md`
+- `optimized-graph.json` when Optimizer ran; otherwise `resolved-graph.json`
+- `reference/<target>/README.md`
 - Compiler configuration
 
 ## Algorithm (MUST)
@@ -40,4 +40,4 @@ Transform resolved knowledge graph into runtime-specific output.
 
 ## Output types
 
-Compilers produce **AI Context** — not merely rules files. See runtime specs.
+Compilers produce **AI Context** — not merely rules files. See reference target specs in `reference/<target>/`.

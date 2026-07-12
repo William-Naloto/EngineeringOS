@@ -42,7 +42,7 @@ Markdown source
 Canonical AST (Knowledge Contract + body + evidence)
     ↓ Validator
     ↓ Resolver
-    ↓ Optimizer
+    ↓ Optimizer (optional)
     ↓ Compiler (reference implementation)
 Runtime target output
 ```

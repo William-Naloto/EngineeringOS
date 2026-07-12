@@ -1,6 +1,7 @@
-# Pipeline Stage: Dependency Resolver
+# Pipeline Stage: Resolver
 
-> **EKL v1 — Normative**
+> **EKL v1 — Normative**  
+> **Also known as:** Dependency Resolver (reference implementation file name)
 
 ## Purpose
 

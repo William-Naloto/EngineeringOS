@@ -6,7 +6,7 @@
 > **ekl_version:** 1.0  
 > **Status:** Specification only — not implemented
 
-Implements EKL v1 for the Cursor IDE. See [spec/specification.md](../spec/specification.md).
+Implements EKL v1 for the Cursor IDE. See [spec/specification.md](../../spec/specification.md).
 
 ## Supported features
 
@@ -15,17 +15,42 @@ Implements EKL v1 for the Cursor IDE. See [spec/specification.md](../spec/specif
 | Rules | Yes | `.cursor/rules/<name>.mdc` |
 | Skills | Yes | `.cursor/skills/<skill>/SKILL.md` |
 | Commands | Yes | `.cursor/commands/<name>.md` |
+| Memories | Partial | Via rules (no native compile target) |
 | MCP | No (runtime adapter) | — |
+| Project context | Yes | Rules activation `globs`, `alwaysApply` |
 
 ## EKL artifact mapping
 
 | EKL artifact | Output |
 |--------------|--------|
 | `agent.*` | `.cursor/rules/agent-<name>.mdc` |
-| `topic.*` | `.cursor/rules/<topic-id>.mdc` |
-| `capability.*` | `.cursor/rules/capability-<name>.mdc` |
+| `competency.*` / `topic.*` | `.cursor/rules/<topic-id>.mdc` |
+| `capability.*` | `.cursor/rules/capability-<name>.mdc` + orchestration metadata |
 | `skill.*` | `.cursor/skills/<name>/SKILL.md` |
+
+## Rule file format (.mdc)
+
+```yaml
+---
+description: <from contract provides + title>
+globs: <from triggers file patterns if applicable>
+alwaysApply: false
+---
+<compiled body — Evidence preserved>
+```
+
+## Context limits
+
+| Limit | Value | Optimizer action |
+|-------|-------|------------------|
+| Recommended rules | ≤ 20 active | Priority by capability |
+| Max rule size | ~500 lines | Summarize via optimizer |
 
 ## Implementation
 
 `compilers/cursor/` (when built)
+
+## References
+
+- [pipeline/compiler.md](../../pipeline/compiler.md)
+- [spec/specification.md](../../spec/specification.md)

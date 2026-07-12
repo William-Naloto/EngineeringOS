@@ -1,6 +1,7 @@
 # Pipeline Stage: Normalizer
 
-> **EKL v1 — Normative**
+> **EKL v1 — Reference extension (MAY implement)**  
+> **Position:** After Validator, before Resolver — see [spec/specification.md §5.2](../spec/specification.md#52-reference-implementation-extensions)
 
 ## Purpose
 

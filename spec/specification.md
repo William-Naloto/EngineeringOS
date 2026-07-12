@@ -139,6 +139,17 @@ Optimized AST graph
 Compilation target output
 ```
 
+### 5.2 Reference implementation extensions
+
+The normative pipeline (§5.1) defines EKL compliance. The [reference implementation](../pipeline/README.md) MAY add stages that do not change the normative order of Parser, Validator, Resolver, Optimizer, and Compiler:
+
+| Stage | Position | Requirement | Purpose |
+|-------|----------|-------------|---------|
+| **Normalizer** | After Validator | MAY | Structure and metadata normalization before resolution |
+| **Publisher** | After Compiler | MAY | Release packaging and distribution |
+
+Reference implementations MUST NOT reorder normative stages. **Resolver** is the normative name; reference docs MAY use `dependency-resolver.md` as the stage specification file.
+
 ---
 
 ## 6. Compilation targets (abstract)

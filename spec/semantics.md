@@ -75,10 +75,14 @@ capability → agent → competency topic → skill → workflow → standard
 | Contract schema valid | Reject node |
 | Required fields present | Reject node |
 | `id` globally unique | Reject build |
+| `id` matches `type.domain.name` pattern | Reject node |
 | No cyclic dependencies | Reject build |
 | `## Evidence` section present | Reject node |
 | `confidence: Unknown` + `status: stable` | Reject node (default) |
+| `reviewed` set when `status: stable` | Reject node |
 | Research in compile scope | Reject build |
+
+Contract field rules in [contracts.md](contracts.md) §2–3 define the `id` pattern and `reviewed` requirements enforced above.
 
 ### 3.2 Validator SHOULD checks
 

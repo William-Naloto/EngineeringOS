@@ -1,6 +1,7 @@
 # Pipeline Stage: Publisher
 
-> **EKL v1 — Normative (MAY implement)**
+> **EKL v1 — Reference extension (MAY implement)**  
+> **Position:** After Compiler — see [spec/specification.md §5.2](../spec/specification.md#52-reference-implementation-extensions)
 
 ## Purpose
 
@@ -32,5 +33,5 @@ on:
     tags: ['v*']
 jobs:
   publish:
-    runs: ekl validate → build → optimize → publish
+    runs: ekl validate → build → publish
 ```

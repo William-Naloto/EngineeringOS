@@ -1,25 +1,7 @@
-# Runtime Specification: OpenHands
+# Runtime Specification: OpenHands (deprecated)
 
-> **runtime_id:** `openhands`  
-> **runtime_version:** 1.0.0-draft  
-> **eks_version:** 1.0
+> **Moved to:** [reference/openhands/README.md](../../reference/openhands/README.md)
 
-## Supported features
+Per EKL spec/reference separation, vendor-specific compilation targets live in `reference/`.
 
-| Feature | Supported | Output |
-|---------|-----------|--------|
-| Agent configuration | Yes | `config.yaml` or project instructions |
-| Microagents | Partial | Compiled from `skill.*` nodes |
-| MCP | Runtime (adapters/) | — |
-
-## Output mapping
-
-| EKS artifact | OpenHands output |
-|--------------|------------------|
-| `agent.*` | Agent persona config |
-| `capability.*` | Task orchestration config |
-| `skill.*` | Microagent definitions |
-
-## Compiler location
-
-`compilers/openhands/`
+See [reference/openhands/README.md](../../reference/openhands/README.md).

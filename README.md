@@ -28,7 +28,7 @@ Runtime output             =  ephemeral   ← generated
 Like OpenAPI → codegen. The specification outlives any compiler.
 
 ```
-Markdown → Parser → Canonical AST → Pipeline → Compiler → Target
+Markdown → Parser → Validator → Resolver → Optimizer (optional) → Compiler → Target
 ```
 
 **EKL** — Engineering Knowledge Language. Not **EKS** (Amazon collision).

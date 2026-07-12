@@ -1,10 +1,10 @@
 # Pipeline Stage: Optimizer
 
-> **EKL v1 — Normative (SHOULD implement)**
+> **EKL v1 — Normative (SHOULD implement; optional stage)**
 
 ## Purpose
 
-Minify compiled output to fit runtime context limits without losing semantic content.
+Reduce the resolved AST graph to fit runtime context limits without losing semantic content. Runs **after Resolver, before Compiler** per [spec/specification.md §5.1](../spec/specification.md#51-parse-pipeline).
 
 ## Strategies
 
@@ -18,13 +18,13 @@ Minify compiled output to fit runtime context limits without losing semantic con
 
 ## Inputs
 
-- Compiled output files
-- Runtime spec `context_limit_tokens` (if defined)
+- `resolved-graph.json`
+- Reference target spec `context_limit_tokens` (if defined) from `reference/<target>/`
 - Build config `optimization_level`: `none` \| `standard` \| `aggressive`
 
 ## Outputs
 
-- Optimized output files (in-place or separate `optimized/` dir)
+- `optimized-graph.json` — graph passed to Compiler
 - `optimization-report.json` — what was deduplicated, truncated, or summarized
 
 ## Rules

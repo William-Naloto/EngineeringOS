@@ -152,8 +152,9 @@ Standards Alignment Review is complete when:
 - [x] Spec/reference separation enforced
 - [x] RFC 2119 adopted throughout spec
 - [x] EKS renamed to EKL (avoid Amazon EKS collision)
-- [ ] ADR 0015 updated to Canonical Knowledge as Product
-- [ ] Implementation paused until review sign-off
+- [x] ADR 0015 updated to Canonical Knowledge as Product
+- [x] Implementation paused (Sprint 1A on hold)
+- [ ] Standards alignment review signed off (resumes Sprint 1A)
 
 ---
 
