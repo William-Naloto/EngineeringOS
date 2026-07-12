@@ -1,165 +1,95 @@
 # EngineeringOS Roadmap
 
-> **Version:** 0.1.1  
 > **Last updated:** 2026-07-12  
-> **Model:** Sprint-based · Capability-centric · Competency-driven
+> **Current milestone:** Standards Alignment (pause implementation)
 
-**Architecture is frozen.** No more restructuring. Incremental evolution only — see [ADR 0014](adr/0014-knowledge-evolution-policy.md).
+**Architecture frozen.** [ADR 0014](adr/0014-knowledge-evolution-policy.md) · [ADR 0015](adr/0015-canonical-knowledge-as-product.md)
 
-Progress is measured by **what makes you a better engineer tomorrow morning** — not by folder count or ADR count.
+**The product is canonical knowledge (EKL).** Compilers are replaceable.
 
 ---
 
-## Mental Model: Engineering Knowledge Compiler (EKC)
+## What this is
 
-Internally, think of this project as an **Engineering Knowledge Compiler**:
+**EKL** — Engineering Knowledge Language. An open engineering knowledge standard.
 
 ```
-Single versioned source of engineering knowledge
-    ↓ validate + enrich (evidence, governance)
-    ↓ compile
-Cursor · Claude · Copilot · Obsidian · Confluence · MkDocs · NotebookLM · …
+Markdown  →  Parser  →  Canonical AST  →  Validator  →  Resolver  →  Compiler  →  Target
 ```
 
-Every tool is a **compilation target**. The repository is canonical knowledge — not documentation, not Cursor rules.
+Like OpenAPI → codegen. Like TypeScript → tsc. Like Terraform → provider.
 
-**Classification:** Recommendation
+**Not EKS** — avoids Amazon Elastic Kubernetes Service collision.
 
 ---
 
-## Organizational Model
+## Milestone sequence
 
+| Milestone | Focus | Status |
+|-----------|-------|--------|
+| **v0.1.1** | Platform frozen | ✅ Tagged |
+| **Standards Alignment** | EKL spec, RFC 2119, spec/reference split | 🚧 Current |
+| **Sprint 1A** | Reference compiler implementation | ⏸ Paused |
+| **Sprint 1B** | Competencies as compile inputs | Deferred |
+| **Sprint 2** | EKL v1 ratification + CI validation | Planned |
+| **Sprint 3** | Review PR capability (compiled) | Planned |
+
+---
+
+## Standards Alignment (current)
+
+**Objective:** Map EKL against existing standards. No new features.
+
+| Deliverable | Status |
+|-------------|--------|
+| [SPECIFICATION.md](SPECIFICATION.md) | ✅ |
+| [spec/specification.md](spec/specification.md) | ✅ |
+| [spec/contracts.md](spec/contracts.md) | ✅ |
+| [spec/semantics.md](spec/semantics.md) | ✅ |
+| [spec/compatibility.md](spec/compatibility.md) | ✅ |
+| [spec/standards-alignment.md](spec/standards-alignment.md) | ✅ |
+| [reference/](reference/) — vendor targets | ✅ |
+| ADR 0015 amended — Canonical Knowledge as Product | ✅ |
+| EKS → EKL rename | ✅ |
+| Implementation | ⏸ Paused until sign-off |
+
+**Exit criteria:** Standards alignment reviewed and signed off. Then resume Sprint 1A.
+
+---
+
+## Sprint 1A — Reference Compiler (paused)
+
+```bash
+ekl build --target cursor --capability capability.engineering.review-pr
+ekl build --target claude ...
 ```
-Engineering (the discipline)
-    ↓
-Competencies (professional roles — Principal Architect, Principal Reviewer, …)
-    ↓
-Capabilities (what AI can accomplish — Review PR, Design Architecture, …)
-    ↓
-Projects (where knowledge is validated)
-```
 
-**Not:** Markdown → Markdown → Markdown.
-
-**But:** Teach engineers through competencies that execute capabilities.
+Targets: Cursor, Claude, AGENTS.md, Copilot, OpenHands, Roo, Windsurf — see [reference/](reference/).
 
 ---
 
-## Sprint Overview
+## Sprint 1B — Principal Architect (deferred)
 
-| Sprint | Deliverable | Production outcome |
-|--------|-------------|-------------------|
-| **Sprint 1** | Principal Software Architect competency + Review PR capability | AI can review a pull request end-to-end |
-| **Sprint 2** | Create Architecture capability | AI can produce ADRs and architecture docs |
-| **Sprint 3** | Fabric Solution capability | AI can guide Fabric solution design |
-| _Future_ | Additional competencies and capabilities | Incremental |
+15 topic drafts in `competencies/principal-software-architect/` are **compile inputs**.
+
+One `ekl build` → all targets. Do not write competencies manually per IDE.
 
 ---
 
-## Sprint 1 — Principal Software Architect + Review PR
+## Standards-first rule
 
-**Goal:** ONE production-ready capability. Not twenty half-built skills.
+Before any new concept, ask: Does OpenAPI, OCI, JSON Schema, SPDX, Terraform, or K8s CRD already solve this?
 
-### Capability target
-
-**Review Pull Request** — complete, production-ready.
-
-### Requires (via Principal Software Architect competency)
-
-| Topic | Purpose |
-|-------|---------|
-| Documentation | Clear review comments |
-| Architecture | Assess structural impact |
-| Git | Commit and branch hygiene |
-| Review | Review process and criteria |
-| Testing | Test adequacy assessment |
-| Security | Security-sensitive change detection |
-| Naming | Convention compliance |
-| Logging | Observability considerations |
-
-### Competency target
-
-**Principal Software Architect** — first production competency (~15–20 files).
-
-Sets the quality bar for every competency that follows. Every other competency depends on it.
-
-Location: [competencies/principal-software-architect/](competencies/principal-software-architect/)
-
-### Sprint 1 exit criteria
-
-- [ ] Principal Software Architect competency: `status: stable` on core topics
-- [ ] `capability.engineering.review-pr`: production-ready
-- [ ] Validation test prompts pass
-- [ ] At least one compiler target produces usable output (Cursor or Claude)
-- [ ] Capability Matrix shows Review PR as ✅
+See [spec/standards-alignment.md](spec/standards-alignment.md).
 
 ---
 
-## Sprint 2 — Create Architecture
+## Anti-patterns
 
-**Capability:** Design and document system architecture (ADRs, Mermaid, trade-offs).
-
-**Requires:** Architecture, Documentation, Mermaid, ADR authoring, Review.
-
-**Builds on:** Principal Software Architect competency from Sprint 1.
-
----
-
-## Sprint 3 — Build Microsoft Fabric Solution
-
-**Capability:** End-to-end Fabric solution guidance.
-
-**Requires:** Fabric, SQL, Power BI, Python, Review, Documentation.
-
-**Competency:** Principal Microsoft Fabric Engineer (future).
-
----
-
-## Future Competencies (backlog)
-
-| Competency | Enables capabilities |
-|------------|---------------------|
-| Principal Reviewer | Review PR, code quality audits |
-| Principal Microsoft Fabric Engineer | Fabric monitoring, semantic models, pipelines |
-| Principal Data Engineer | Feature store, pipelines, data quality |
-| Principal SRE | Platform observability, incident RCA |
-
-A competency contains architecture, patterns, anti-patterns, performance, security, governance, communication, documentation, troubleshooting — not a single Markdown file.
-
----
-
-## Compilation Targets (not just IDEs)
-
-| Target | Output | Priority |
-|--------|--------|----------|
-| Cursor | AI context (rules, skills) | Sprint 1 |
-| Claude Code | CLAUDE.md instructions | Sprint 1 |
-| GitHub Copilot | copilot-instructions.md | Sprint 2 |
-| Obsidian | Vault notes | Backlog |
-| NotebookLM | Source package | Backlog |
-| Confluence | Pages | Backlog |
-| MkDocs / Docusaurus | Documentation site | Backlog |
-| GitHub Wiki | Wiki pages | Backlog |
-
-Compilers generate **AI Context** — not merely "Cursor Rules."
-
----
-
-## What We Will NOT Do
-
-| Anti-pattern | Policy |
-|--------------|--------|
-| Another week on framework | Architecture frozen |
-| Bulk skills without capability | Sprint delivers ONE capability |
-| Update OS while developing | ADR 0014 |
-| Measure progress by file count | Measure by production capabilities |
-| Restructure folders | Incremental ADRs only |
-
----
-
-## Released
-
-| Version | Meaning |
-|---------|---------|
-| **v0.1.1** | Platform architecture frozen — tag applied |
-| Sprint 1+ | Value delivery begins |
+| ❌ | ✅ |
+|----|-----|
+| Invent without checking standards | Reuse / Extend / Document divergence |
+| Name it EKS | EKL |
+| Compiler is the product | Canonical knowledge is the product |
+| Spec mentions Cursor | `reference/cursor/` only |
+| Write competencies manually | Compile once |

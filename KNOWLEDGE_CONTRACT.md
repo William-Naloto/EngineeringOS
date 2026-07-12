@@ -1,8 +1,7 @@
 # Knowledge Contract
 
-> **Version:** 0.1.1-RC1  
-> **Status:** Release candidate — subject to stress test  
-> **Last updated:** 2026-07-12
+> **Version:** 0.1.2 (EKL alignment)  
+> **Specification:** [SPECIFICATION.md](SPECIFICATION.md) · [spec/contracts.md](spec/contracts.md)
 
 Every artifact in EngineeringOS **must** implement this contract. The contract enables any AI agent to parse any document without ambiguity.
 

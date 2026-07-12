@@ -1,7 +1,19 @@
 # Competencies
 
-> **Sprint 1 active**  
+> **Status:** Sprint 1B — DEFERRED until compiler exists (Sprint 1A)  
 > **Classification:** Recommendation
+
+## ⚠️ Do not write competencies manually
+
+Per [ADR 0015](../adr/0015-compiler-as-product.md): competencies are **compile inputs**, not hand-maintained IDE documentation.
+
+```
+competencies/  →  ekl build  →  Cursor + Claude + AGENTS.md + …
+```
+
+Write knowledge once. Compiler distributes everywhere.
+
+---
 
 Competencies are **professional role knowledge bases** — not single skills, not prompt files.
 

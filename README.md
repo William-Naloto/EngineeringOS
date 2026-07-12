@@ -1,95 +1,68 @@
 # EngineeringOS
 
-> **An AI Engineering Operating System** — versioned, vendor-agnostic knowledge for AI-assisted software engineering.
+> **Reference implementation of EKL v1** — Engineering Knowledge Language
 
-**Version:** 0.1.1-RC1 (release candidate — not tagged)  
-**Status:** Platform architecture frozen pending RC1 sign-off.
-
----
-
-## 15-minute onboarding
-
-**Start here:** [QUICKSTART.md](QUICKSTART.md)
+**Version:** v0.1.1 (tagged) · **Milestone:** Standards Alignment
 
 ---
 
-## What is this?
-
-Not an app. Not a prompt library. A **governed platform**:
-
-```
-Capability (recipe) → Agent (who) → Skill (brick) → Workflow
-         ↑
-    standards/ (stable foundation)
-         ↑
-    research/ → capture/ → validation/ → publish
-```
-
-Compilers transform canonical knowledge into every IDE format.
-
----
-
-## Key documents
+## Start here
 
 | Document | Purpose |
 |----------|---------|
+| **[SPECIFICATION.md](SPECIFICATION.md)** | **EKL normative specification** |
+| [spec/standards-alignment.md](spec/standards-alignment.md) | Industry standard mapping |
+| [ROADMAP.md](ROADMAP.md) | Milestones |
 | [QUICKSTART.md](QUICKSTART.md) | 15-minute onboarding |
-| [ENGINEERING_PHILOSOPHY.md](ENGINEERING_PHILOSOPHY.md) | Constitution |
-| [KNOWLEDGE_CONTRACT.md](KNOWLEDGE_CONTRACT.md) | Universal artifact spec |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | Platform layout |
-| [CAPABILITY_MATRIX.md](CAPABILITY_MATRIX.md) | Coverage dashboard |
-| [releases/v0.1.1-RC1.md](releases/v0.1.1-RC1.md) | RC1 checklist |
 
 ---
 
-## Platform structure
+## The product model
+
+```
+Canonical Knowledge (EKL)  =  permanent   ← the product
+Compilers                  =  replaceable  ← the ecosystem
+Runtime output             =  ephemeral   ← generated
+```
+
+Like OpenAPI → codegen. The specification outlives any compiler.
+
+```
+Markdown → Parser → Canonical AST → Pipeline → Compiler → Target
+```
+
+**EKL** — Engineering Knowledge Language. Not **EKS** (Amazon collision).
+
+---
+
+## Repository layout
 
 ```
 EngineeringOS/
-├── capabilities/     # Recipes (router loads first)
-├── agents/           # Personas (who)
-├── standards/        # Stable conventions
-├── packs/            # Self-contained domain bundles
-├── research/         # Raw notes (never loaded in prod)
-├── capture/          # Learning pipeline (+ future /capture)
-├── validation/       # Quality gates
-├── compilers/        # Source → IDE
-├── adr/              # 13 architecture decisions
-└── routing/          # Capability-first loading
+├── SPECIFICATION.md    # EKL entry point
+├── spec/               # Vendor-neutral (MUST NOT name IDEs)
+├── reference/          # Reference compilers per target
+├── competencies/       # Canonical knowledge
+├── pipeline/           # Build pipeline
+└── compilers/          # Compiler implementations
 ```
 
 ---
 
-## RC1 status
+## Status
 
-| Check | Status |
-|-------|--------|
-| Stress test | ✅ [docs/architectural-stress-test.md](docs/architectural-stress-test.md) |
-| 15-min onboarding | ✅ QUICKSTART.md |
-| ADRs for all decisions | ✅ 13 ADRs |
-| Capability routing | ✅ ADR 0009 |
-| Evidence + confidence | ✅ ADR 0010 |
-| Scale mitigations documented | ✅ ADR 0012 |
-| **Tag v0.1.1** | ⏳ Awaiting sign-off |
-
----
-
-## Roadmap (capability-centric)
-
-```
-v0.2 Core Runtime    → universal standards (git, review, docs…)
-v0.3 Technology Packs → fabric, python, databricks…
-v0.4 Capabilities     → orchestration recipes
-v0.5 Compilers        → one source, every IDE
-```
-
-See [ROADMAP.md](ROADMAP.md).
+| Milestone | Status |
+|-----------|--------|
+| v0.1.1 platform frozen | ✅ [GitHub](https://github.com/William-Naloto/EngineeringOS/releases/tag/v0.1.1) |
+| EKL specification | ✅ Draft |
+| Standards alignment | 🚧 Current |
+| Compiler implementation | ⏸ Paused |
 
 ---
 
 ## For AI agents
 
-1. [QUICKSTART.md](QUICKSTART.md) → [ENGINEERING_PHILOSOPHY.md](ENGINEERING_PHILOSOPHY.md)
-2. Match **capabilities** first ([CAPABILITIES_INDEX.md](CAPABILITIES_INDEX.md))
-3. Resolve orchestrated agents + skills — never load entire repo
-4. Cite **Evidence** — state confidence level — never say "I think…"
+1. [SPECIFICATION.md](SPECIFICATION.md) — normative rules
+2. [ENGINEERING_PHILOSOPHY.md](ENGINEERING_PHILOSOPHY.md) — constitutional constraints
+3. Match capabilities first — never load entire repository
+4. Cite Evidence — state confidence — never say "I think…"

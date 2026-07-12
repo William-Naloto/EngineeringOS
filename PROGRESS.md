@@ -1,74 +1,57 @@
 # EngineeringOS Progress
 
-> **Version:** 0.1.1 (tagged)  
-> **Last updated:** 2026-07-12
-
-**Architecture frozen.** Sprint 1 in progress.
+> **Last updated:** 2026-07-12  
+> **Milestone:** Standards Alignment
 
 ---
 
-## Released: v0.1.1
+## Current focus
 
-Platform architecture frozen. RC1 approved with comments. See [ARCHITECTURE-FREEZE.md](ARCHITECTURE-FREEZE.md).
+Pause implementation. Complete EKL specification and standards alignment review.
 
----
-
-## Sprint 1 — Principal Software Architect + Review PR
-
-**Goal:** ONE production-ready capability.
-
-| Deliverable | Progress |
-|-------------|----------|
-| Principal Software Architect competency | 🚧 15/15 topic files drafted |
-| Review PR capability | 🚧 Orchestration wired to competency |
-| Validation test prompts | ❌ Not started |
-| Compiler output (Cursor or Claude) | ❌ Not started |
-| Capability Matrix: Review PR ✅ | ❌ Pending stable promotion |
-
-### Competency topics
-
-| Topic | Status |
-|-------|--------|
-| design-principles | Draft |
-| architecture-design | Draft |
-| trade-off-analysis | Draft |
-| adr-authoring | Draft |
-| system-decomposition | Draft |
-| documentation | Draft |
-| architecture-review | Draft |
-| technology-selection | Draft |
-| failure-modes | Draft |
-| security-architecture | Draft |
-| scalability | Draft |
-| communication | Draft |
-| anti-patterns | Draft |
-| naming | Draft |
-| git-and-change | Draft |
-
-**Next:** Validation → promote to stable → first compiler output.
+| Deliverable | Status |
+|-------------|--------|
+| EKL specification (`spec/`) | ✅ Draft |
+| [SPECIFICATION.md](SPECIFICATION.md) | ✅ |
+| Spec / reference separation | ✅ |
+| Standards alignment review | ✅ |
+| EKS → EKL rename | ✅ |
+| ADR 0015 amended | ✅ |
+| Reference compiler code | ⏸ Paused |
 
 ---
 
-## ADRs: 14 (frozen — incremental only)
+## Released
 
-Latest: [ADR 0014 Knowledge Evolution Policy](adr/0014-knowledge-evolution-policy.md)
-
----
-
-## Anti-metrics (watch these)
-
-| Trap | Current | Policy |
-|------|---------|--------|
-| ADRs without competencies | 14 ADRs, 1 competency | Stop ADRs; build value |
-| Folders without content | Frozen | No new folders |
-| Skills without capabilities | 0 skills | Sprint delivers capability |
+| Tag | Meaning |
+|-----|---------|
+| `v0.1.1` | Platform architecture frozen |
 
 ---
 
-## Recent Activity
+## Compile inputs (ready when Sprint 1A resumes)
+
+| Input | Location |
+|-------|----------|
+| Principal Software Architect (15 topics) | `competencies/principal-software-architect/` |
+| Review PR capability | `capabilities/engineering/review-pr.md` |
+
+---
+
+## Key documents
+
+| Document | Purpose |
+|----------|---------|
+| [SPECIFICATION.md](SPECIFICATION.md) | **Start here** — EKL entry point |
+| [spec/standards-alignment.md](spec/standards-alignment.md) | Industry standard mapping |
+| [adr/0015-canonical-knowledge-as-product.md](adr/0015-canonical-knowledge-as-product.md) | Product model |
+
+---
+
+## Recent activity
 
 | Date | Change |
 |------|--------|
-| 2026-07-12 | v0.1.1 tagged — architecture frozen; Sprint 1 started |
-| 2026-07-12 | ADR 0014; competencies model; Principal Software Architect (15 topics) |
-| 2026-07-12 | RC1 approved; stress test complete |
+| 2026-07-12 | EKL rename; spec split; standards alignment; ADR 0015 amended |
+| 2026-07-12 | v0.1.1 tagged on GitHub |
+| 2026-07-12 | Sprint 1A spec (pipeline, reference targets) |

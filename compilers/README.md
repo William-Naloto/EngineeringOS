@@ -1,82 +1,29 @@
 # Compilers
 
-> **Version:** 0.1.1  
-> **Classification:** Recommendation
+> **Reference implementation workspace**  
+> **Specification:** [SPECIFICATION.md](../SPECIFICATION.md)  
+> **Target specs:** [reference/](../reference/)
 
-Compilers transform canonical engineering knowledge into **AI Context** and other output formats. EngineeringOS is the single source of truth — every consumer is a compilation target.
-
-## Engineering Knowledge Compiler (EKC)
-
-Internally: **EKC** — maintain one versioned source, validate with evidence, compile to any format.
+Compilers are **replaceable**. Canonical knowledge is **not**.
 
 ```
-Canonical knowledge (competencies, capabilities, agents)
-    ↓ compiler
-AI Context → Cursor · Claude · Copilot · Gemini CLI · OpenHands · Roo · Cline · Windsurf
-    ↓ compiler
-Documentation → MkDocs · Docusaurus · Confluence · GitHub Wiki
-    ↓ compiler
-Knowledge tools → Obsidian Vault · NotebookLM package
+Canonical AST  →  reference/<target>/  →  Runtime output
 ```
 
-**Not** "generate Cursor Rules." **Generate AI Context** — and everything else is another target.
+## EKL abstract targets → reference implementations
 
-## Compiler responsibilities
+| Abstract target | Reference |
+|-----------------|-----------|
+| `ai-context-rules` | [reference/cursor/](../reference/cursor/), [reference/roo/](../reference/roo/), [reference/windsurf/](../reference/windsurf/) |
+| `ai-context-instructions` | [reference/claude/](../reference/claude/), [reference/copilot/](../reference/copilot/) |
+| `ai-context-agents` | [reference/agents-md/](../reference/agents-md/), [reference/openhands/](../reference/openhands/) |
 
-1. **Resolve** — Read artifacts by ID; resolve `dependencies` transitively
-2. **Filter** — Apply routing rules and project overlay configuration
-3. **Transform** — Convert Markdown + contract to IDE-native format
-4. **Write** — Output to configured destination path
-5. **Report** — Log compiled artifacts, versions, and warnings
+The [specification](../spec/specification.md) MUST NOT name vendor products.
 
-Compilers **never modify** canonical source in `standards/`, `packs/`, or `agents/`.
-
-## Planned compilers
-
-| Compiler | Target | Output | Status |
-|----------|--------|--------|--------|
-| `cursor/` | Cursor IDE | `.cursor/rules/*.mdc`, skills | Not started |
-| `claude-code/` | Claude Code | `CLAUDE.md` | Not started |
-| `copilot/` | GitHub Copilot | `.github/copilot-instructions.md` | Not started |
-| `openhands/` | OpenHands | Config files | Not started |
-| `windsurf/` | Windsurf | Rule files | Not started |
-
-## Input resolution order
-
-```
-1. Project overlay (.engineeringos/manifest.yaml)
-2. Activated packs (packs/<name>/manifest.yaml)
-3. Referenced standards (standards/)
-4. Agent personas (agents/) — if configured
-5. Routing rules (routing/manifest.yaml)
-```
-
-## Output policy
-
-| Option | Recommendation |
-|--------|---------------|
-| Commit compiled output | Convenient for teams without build step |
-| Gitignore compiled output | Cleaner repo; requires CI build |
-
-**Decision deferred to v0.5.** See [ADR 0007](../adr/0007-compilation-model.md).
-
-## Relationship to adapters
-
-| | Compilers | Adapters |
-|---|-----------|----------|
-| **When** | Build time | Runtime |
-| **Purpose** | Generate IDE config files | Live integration hooks (MCP, routing) |
-| **Output** | Static files | Dynamic connections |
-
-Both reference canonical source by ID. Neither duplicates knowledge.
-
-## CLI (planned v1.0)
+## CLI
 
 ```bash
-eos compile --target cursor --packs fabric,python --output ./my-project
-eos compile --target claude-code --agents architect,reviewer
-eos validate --all
-eos route --query "review this PR"
+ekl build --target cursor --output ./my-project
 ```
 
-**Classification:** Experimental idea
+Implementation paused — see [ROADMAP.md](../ROADMAP.md).

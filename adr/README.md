@@ -20,6 +20,8 @@
 | [0012](0012-scale-ready-indexes.md) | Scale-Ready Indexes | Accepted |
 | [0013](0013-self-improving-capture-command.md) | Self-Improving `/capture` | Proposed |
 | [0014](0014-knowledge-evolution-policy.md) | Knowledge Evolution Policy | Accepted |
+| [0015](0015-canonical-knowledge-as-product.md) | Canonical Knowledge as Product | Accepted |
+| [0015 (old)](0015-compiler-as-product.md) | Compiler as Product | Superseded |
 
 ## Related
 
