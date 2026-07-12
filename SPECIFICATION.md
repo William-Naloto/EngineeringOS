@@ -61,11 +61,20 @@ All specification documents use [RFC 2119](https://datatracker.ietf.org/doc/html
 
 | Term | Meaning |
 |------|---------|
-| **EKL** | Engineering Knowledge Language — the specification |
-| **EngineeringOS** | Reference implementation and canonical knowledge repository |
+| **EngineeringOS** | Platform and canonical knowledge repository — the source of truth |
+| **EKL** | Engineering Knowledge Language — the specification and knowledge model |
+| **EOR** | EngineeringOS Runtime — interprets EKL and exposes tools via MCP |
 | **EKC** | Engineering Knowledge Compiler — informal name for the compiler ecosystem |
 
+```
+EngineeringOS → EKL → EOR → MCP Server → AI IDE
+```
+
+Multiple EOR implementations MAY coexist, analogous to multiple databases implementing SQL. EngineeringOS ships the reference EOR.
+
 **EKL** is used instead of "EKS" to avoid collision with Amazon Elastic Kubernetes Service.
+
+MCP specification: [docs/mcp/specification.md](docs/mcp/specification.md)
 
 ---
 

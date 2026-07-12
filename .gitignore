@@ -21,6 +21,8 @@ Thumbs.db
 # Build and validation artifacts
 .dist/
 .cache/
+dist/
+node_modules/
 *.log
 
 # Environment

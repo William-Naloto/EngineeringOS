@@ -1,0 +1,22 @@
+{
+  "name": "engineeringos-eor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "EngineeringOS Runtime — EKL parser and MCP server",
+  "scripts": {
+    "build": "tsc",
+    "test": "node --experimental-strip-types --test runtime/parser/markdown-parser.test.ts runtime/validator/ekl-validator.test.ts runtime/resolver/dependency-resolver.test.ts runtime/router/capability-router.test.ts runtime/api/graph-edges.test.ts runtime/api/mcp-api.test.ts",
+    "mcp": "node --experimental-strip-types runtime/api/mcp-main.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -23,9 +23,19 @@ Extended documentation beyond root-level governance files.
 
 | Path | Purpose |
 |------|---------|
-| `docs/` | Extended guides, tutorials, onboarding (future) |
+| `docs/mcp/` | MCP server specification (Sprint 2) — [README](mcp/README.md) |
+| `docs/` | Extended guides, tutorials, onboarding |
 
 Architecture decisions live in [adr/](../adr/), not here.
+
+## MCP documentation (Sprint 2)
+
+| Document | Purpose |
+|----------|---------|
+| [mcp/specification.md](mcp/specification.md) | MCP contract and architecture |
+| [mcp/domain-model.md](mcp/domain-model.md) | EOR domain model |
+| [mcp/runtime.md](mcp/runtime.md) | Runtime behavioral contracts |
+| [mcp/api.md](mcp/api.md) | MCP tool definitions |
 
 ## Planned docs
 
