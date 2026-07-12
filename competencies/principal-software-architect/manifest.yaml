@@ -1,0 +1,40 @@
+# Principal Software Architect Competency
+
+id: competency.principal-software-architect
+version: "0.1.0"
+status: draft
+lifecycle: created
+owner: EngineeringOS Maintainers
+classification: BestPractice
+confidence: Medium
+dependencies: []
+provides:
+  - architecture-design
+  - system-design
+  - architecture-review
+  - adr-authoring
+requires: []
+references:
+  - https://c4model.com/
+  - adr/0001-repository-architecture.md
+updated: 2026-07-12
+reviewed: null
+topics:
+  - topic.architecture.design-principles
+  - topic.architecture.architecture-design
+  - topic.architecture.trade-off-analysis
+  - topic.architecture.adr-authoring
+  - topic.architecture.system-decomposition
+  - topic.architecture.documentation
+  - topic.architecture.architecture-review
+  - topic.architecture.technology-selection
+  - topic.architecture.failure-modes
+  - topic.architecture.security-architecture
+  - topic.architecture.scalability
+  - topic.architecture.communication
+  - topic.architecture.anti-patterns
+  - topic.architecture.naming
+  - topic.architecture.git-and-change
+enables_capabilities:
+  - capability.engineering.review-pr
+  - capability.engineering.design-architecture

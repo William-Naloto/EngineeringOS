@@ -1,0 +1,63 @@
+# EngineeringOS Routing Manifest
+# Version: 0.1.1-RC1
+
+version: "0.1.1-RC1"
+os_version: "0.1.1"
+
+taxonomy:
+  domains:
+    - engineering
+    - fabric
+    - platform
+    - data
+    - security
+  artifact_types:
+    - capability
+    - skill
+    - workflow
+    - standard
+    - agent
+    - pack
+    - template
+  status:
+    - draft
+    - experimental
+    - stable
+    - deprecated
+  confidence:
+    - High
+    - Medium
+    - Low
+    - Unknown
+
+# Capability-first routing (ADR 0009)
+# Rules match capabilities; orchestrated artifacts resolved automatically
+routing_strategy: capability-first
+
+rules: []
+
+defaults:
+  max_capabilities_per_session: 3
+  max_artifacts_per_session: 8
+  prefer_capabilities_over_skills: true
+  prefer_agents_with_capabilities: true
+  require_explicit_trigger: false
+  status_filter: stable
+  confidence_minimum: Low
+  exclude_research: true
+  exclude_lifecycle: [created]
+
+resolution_order:
+  - capability
+  - agent
+  - skill
+  - workflow
+  - standard
+
+compilation:
+  resolve_dependencies: true
+  include_standards: true
+  build_skill_graph: true
+
+# Planned: indexes/artifacts.json as routing data source (ADR 0012)
+index_source: manual

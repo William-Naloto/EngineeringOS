@@ -1,0 +1,15 @@
+# Pack manifest — Knowledge Contract
+# Copy and customize when creating a new pack.
+
+id: pack.<name>
+version: "0.1.0"
+status: draft
+owner: <team-or-individual>
+classification: Recommendation
+dependencies: []          # standard.* IDs and other pack.* IDs
+provides: []               # Capability tokens for CAPABILITY_MATRIX.md
+requires: []               # External tools/platforms
+references: []
+updated: 2026-07-12
+reviewed: null
+modules: []                # Inventory: { id, version } pairs

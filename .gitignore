@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+*.swp
+*.swo
+*~
+
+# Local overrides
+**/.engineeringos/local/
+**/.engineeringos/secrets/
+
+# Compiled output (uncomment when compilers are active)
+# .cursor/rules/
+# .cursor/skills/
+# CLAUDE.md
+# .github/copilot-instructions.md
+
+# Build and validation artifacts
+.dist/
+.cache/
+*.log
+
+# Environment
+.env
+.env.*

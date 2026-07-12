@@ -1,0 +1,110 @@
+# Universal Knowledge Contract schema
+# Version: 0.1.1-RC1
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: KnowledgeContract
+type: object
+required:
+  - id
+  - version
+  - status
+  - lifecycle
+  - owner
+  - classification
+  - confidence
+  - dependencies
+  - provides
+  - requires
+  - references
+  - updated
+  - reviewed
+
+properties:
+  id:
+    type: string
+    pattern: "^[a-z]+\\.[a-z0-9-]+(\\.[a-z0-9-]+)*$"
+
+  version:
+    type: string
+    pattern: "^\\d+\\.\\d+\\.\\d+$"
+
+  status:
+    type: string
+    enum: [draft, experimental, stable, deprecated]
+
+  lifecycle:
+    type: string
+    enum: [created, validated, published, maintained, deprecated]
+
+  owner:
+    type: string
+    minLength: 1
+
+  classification:
+    type: string
+    enum: [Fact, BestPractice, Recommendation, Experimental]
+
+  confidence:
+    type: string
+    enum: [High, Medium, Low, Unknown]
+
+  dependencies:
+    type: array
+    items:
+      type: string
+
+  orchestrates:
+    type: object
+    properties:
+      skills:
+        type: array
+        items:
+          type: string
+      workflows:
+        type: array
+        items:
+          type: string
+      agents:
+        type: array
+        items:
+          type: string
+
+  provides:
+    type: array
+    items:
+      type: string
+
+  requires:
+    type: array
+    items:
+      type: string
+
+  references:
+    type: array
+    items:
+      type: string
+
+  updated:
+    type: string
+    format: date
+
+  reviewed:
+    oneOf:
+      - type: string
+        format: date
+      - type: "null"
+
+  replaces:
+    type: ["string", "null"]
+
+  tags:
+    type: array
+    items:
+      type: string
+
+  triggers:
+    type: array
+    items:
+      type: string
+
+additionalProperties: true
