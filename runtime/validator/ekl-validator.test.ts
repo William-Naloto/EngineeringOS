@@ -98,13 +98,13 @@ describe('EklValidator', () => {
     ownershipRegistryPath: join(repoRoot, 'OWNERS.md'),
   });
 
-  it('validates a real draft capability with warnings only', async () => {
+  it('validates a real experimental capability with evidence', async () => {
     const node = await parseArtifact('capabilities/engineering/review-pr.md');
     const result = await validator.validateNode(node);
 
     assert.equal(result.artifactId, 'capability.engineering.review-pr');
     assert.equal(result.errors.length, 0);
-    assert.ok(result.warnings.some((entry) => entry.code === 'EMPTY_EVIDENCE'));
+    assert.ok(!result.warnings.some((entry) => entry.code === 'EMPTY_EVIDENCE'));
   });
 
   it('validates schema tier in isolation', async () => {

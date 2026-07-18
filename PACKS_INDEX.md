@@ -1,8 +1,8 @@
 # Knowledge Packs Index
 
 > **Version:** 0.1.1  
-> **Last updated:** 2026-07-12  
-> **Total packs:** 0 production (1 template)
+> **Last updated:** 2026-07-13  
+> **Total packs:** 3 production draft (1 template)
 
 Self-contained, independently versioned domain bundles. See [packs/README.md](packs/README.md).
 
@@ -12,7 +12,10 @@ Self-contained, independently versioned domain bundles. See [packs/README.md](pa
 
 | id | title | version | status | modules | path |
 |----|-------|---------|--------|---------|------|
-| — | — | — | — | — | No production packs |
+| `pack.engineering` | Engineering tooling | 0.1.0 | draft | 1 skill | [packs/engineering/](packs/engineering/) |
+| `pack.fabric` | Microsoft Fabric | 0.1.0 | draft | 2 skills | [packs/fabric/](packs/fabric/) |
+| `pack.platform` | Platform Observability | 0.1.0 | draft | 2 skills, 1 workflow | [packs/platform/](packs/platform/) |
+| `pack.data` | Data Engineering & ML Features | 0.1.0 | draft | 2 skills | [packs/data/](packs/data/) |
 
 ### Reference
 
@@ -22,28 +25,13 @@ Self-contained, independently versioned domain bundles. See [packs/README.md](pa
 
 ---
 
-## Planned Packs
-
-| Pack ID | Scope | Target |
-|---------|-------|--------|
-| `pack.foundation` | Git, review, docs, naming | v0.2 |
-| `pack.fabric` | Fabric, Power BI, semantic models | v1.0 |
-| `pack.python` | Python development | v1.0 |
-| `pack.security` | Threat modeling, secrets | v1.0 |
-| `pack.data` | Pipelines, quality | v2.0 |
-| `pack.platform` | IaC, CI/CD, observability | v2.0 |
-
-**Classification:** Recommendation
-
----
-
 ## Packs by Status
 
 | Status | Count |
 |--------|-------|
 | stable | 0 |
 | experimental | 0 |
-| draft | 0 |
+| draft | 4 |
 
 ---
 

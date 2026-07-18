@@ -1,0 +1,24 @@
+id: pack.platform
+version: "0.1.0"
+status: draft
+lifecycle: created
+owner: Data Platform — GHQ B2B Delta
+classification: Recommendation
+confidence: Medium
+dependencies: []
+provides:
+  - platform-observability
+  - newrelic-observability
+requires:
+  - newrelic
+references:
+  - https://docs.newrelic.com/
+updated: 2026-07-13
+reviewed: null
+modules:
+  - id: skill.platform.newrelic-dashboard
+    version: "0.1.0"
+  - id: skill.platform.slo-definition
+    version: "0.1.0"
+  - id: workflow.platform.incident-response
+    version: "0.1.0"

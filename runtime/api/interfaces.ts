@@ -190,7 +190,8 @@ export type ToolName =
   | 'engineeringos.owner'
   | 'engineeringos.evidence'
   | 'engineeringos.snapshot'
-  | 'engineeringos.export';
+  | 'engineeringos.export'
+  | 'engineeringos.capture';
 
 export interface ToolHandler<TInput, TOutput> {
   readonly name: ToolName;
@@ -201,8 +202,13 @@ export interface ToolHandler<TInput, TOutput> {
 /**
  * MCP API surface — maps tool invocations to EOR operations.
  */
+export type RuntimeToolHandler = (
+  ctx: unknown,
+  input: Record<string, unknown>,
+) => Promise<ToolResponse<unknown>>;
+
 export interface McpApi {
-  readonly tools: Map<ToolName, ToolHandler<unknown, unknown>>;
+  readonly tools: Map<ToolName, RuntimeToolHandler>;
   invoke(name: ToolName, input: unknown): Promise<ToolResponse<unknown>>;
   listTools(): ToolName[];
 }

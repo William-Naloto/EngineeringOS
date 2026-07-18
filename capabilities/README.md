@@ -52,11 +52,11 @@ At scale (100+ capabilities), organize by domain subdirectory. Flat files only w
 
 | File | ID | Status |
 |------|-----|--------|
-| [fabric/monitoring.md](fabric/monitoring.md) | `capability.fabric.monitoring` | Placeholder |
-| [platform/observability.md](platform/observability.md) | `capability.platform.observability` | Placeholder |
-| [engineering/review-pr.md](engineering/review-pr.md) | `capability.engineering.review-pr` | Placeholder |
-| [engineering/design-architecture.md](engineering/design-architecture.md) | `capability.engineering.design-architecture` | Placeholder |
-| [data/feature-store.md](data/feature-store.md) | `capability.data.feature-store` | Placeholder |
+| [fabric/monitoring.md](fabric/monitoring.md) | `capability.fabric.monitoring` | Experimental |
+| [platform/observability.md](platform/observability.md) | `capability.platform.observability` | Experimental |
+| [engineering/review-pr.md](engineering/review-pr.md) | `capability.engineering.review-pr` | Experimental |
+| [engineering/design-architecture.md](engineering/design-architecture.md) | `capability.engineering.design-architecture` | Experimental |
+| [data/feature-store.md](data/feature-store.md) | `capability.data.feature-store` | Experimental |
 
 ## Index
 

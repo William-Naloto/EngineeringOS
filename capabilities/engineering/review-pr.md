@@ -1,16 +1,17 @@
 ---
 id: capability.engineering.review-pr
 version: "0.1.0"
-status: draft
-lifecycle: created
+status: experimental
+lifecycle: validated
 owner: EngineeringOS Maintainers
 classification: Recommendation
-confidence: Unknown
+confidence: Medium
 dependencies:
   - standard.review.pull-request
   - standard.git.commit-messages
 orchestrates:
-  skills: []
+  skills:
+    - skill.engineering.cursor-compile
   workflows: []
   agents:
     - agent.reviewer
@@ -21,15 +22,15 @@ provides:
   - pull-request-review
 requires: []
 references: []
-updated: 2026-07-12
-reviewed: null
+updated: 2026-07-14
+reviewed: 2026-07-14
 tags: [engineering, review, pull-request]
 triggers: [review PR, pull request, code review]
 ---
 
 # Capability: Review Pull Request
 
-> **Status:** Placeholder (RC1)
+> **Status:** Experimental — orchestration wired to competency + agent
 
 ## Purpose
 
@@ -39,9 +40,10 @@ Complete pull request review: correctness, standards compliance, test adequacy, 
 
 | Type | Artifacts | Status |
 |------|-----------|--------|
-| Competency | `competency.principal-software-architect` | Sprint 1 — topics in progress |
-| Agent | `agent.reviewer` | Placeholder |
-| Topics used | architecture-review, security-architecture, naming, git-and-change, documentation | Draft |
+| Competency | `competency.principal-software-architect` | 15 topics (draft) |
+| Agent | `agent.reviewer` | Draft persona |
+| Skill | `skill.engineering.cursor-compile` | Experimental — Cursor delivery |
+| Topics resolved | architecture-review, security-architecture, naming, git-and-change, documentation, design-principles, trade-off-analysis | Via competency expansion |
 
 ## Exit criteria
 
@@ -53,4 +55,8 @@ Complete pull request review: correctness, standards compliance, test adequacy, 
 
 | Source | Type | Confidence contribution |
 |--------|------|------------------------|
-| — | — | No evidence yet |
+| Google engineering practices (code review) | Industry practice | Medium |
+| topic.architecture.architecture-review | Internal artifact | Medium |
+| topic.architecture.git-and-change | Internal artifact | Medium |
+| topic.architecture.naming | Internal artifact | Medium |
+| skill.engineering.cursor-compile | Internal artifact | Medium |

@@ -1,0 +1,24 @@
+id: pack.fabric
+version: "0.1.0"
+status: draft
+lifecycle: created
+owner: Data Platform — GHQ B2B Delta
+classification: Recommendation
+confidence: Medium
+dependencies: []
+provides:
+  - fabric-monitoring
+  - fabric-development
+requires:
+  - microsoft-fabric
+  - power-bi
+  - newrelic
+references:
+  - https://learn.microsoft.com/en-us/fabric/
+updated: 2026-07-13
+reviewed: null
+modules:
+  - id: skill.fabric.monitoring-setup
+    version: "0.1.0"
+  - id: skill.fabric.pipeline-health-check
+    version: "0.1.0"

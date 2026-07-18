@@ -1,6 +1,6 @@
 import type { ArtifactStatus, ConfidenceLevel, KnowledgeNode } from '../ast/interfaces.ts';
 
-const STATUS_RANK: Record<ArtifactStatus, number> = {
+export const STATUS_RANK: Record<ArtifactStatus, number> = {
   draft: 0,
   experimental: 1,
   stable: 2,

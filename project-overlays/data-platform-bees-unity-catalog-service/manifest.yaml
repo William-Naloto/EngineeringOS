@@ -1,0 +1,135 @@
+# EngineeringOS Project Overlay
+# Consumer: data-platform-bees-unity-catalog-service (Azure DevOps — NOT committed there)
+# Organization: AB InBev — GHQ B2B Delta / BEES Data Platform
+
+engineeringos_version: "0.1.1"
+os_release: "0.1.1-RC1"
+
+project:
+  name: data-platform-bees-unity-catalog-service
+  display_name: BEES Unity Catalog Service
+  organization: AB InBev
+  program: GHQ_B2B_Delta
+  team: Unity Catalog / Data Platform
+  primary_workspace: dbw{env}am-dmz001-dw-unity-catalog-app
+  catalog: data_platform_am
+
+consumer_repository:
+  provider: azure-devops
+  organization: ab-inbev
+  project: GHQ_B2B_Delta
+  repository: data-platform-bees-unity-catalog-service
+  default_branch: master
+  local_clone_hint: ../data-platform-bees-unity-catalog-service
+  pr_channel: "# bees-unity-catalog"
+
+activated_capabilities:
+  - id: capability.engineering.review-pr
+    use_when:
+      - Azure DevOps pull request review
+      - code review before merge
+      - PR feedback on notebooks or pipelines
+  - id: capability.fabric.monitoring
+    use_when:
+      - Fabric capacity metrics and Eventhouse polling
+      - Power BI / Fabric workspace monitoring
+      - pipeline health for Fabric workloads
+  - id: capability.platform.observability
+    use_when:
+      - New Relic dashboards and alerts
+      - SLO/SLI definition for data platform services
+      - incident response for platform telemetry
+  - id: capability.data.feature-store
+    use_when:
+      - Unity Catalog feature tables for ML
+      - MLP personalization feature design
+      - governed offline/online feature patterns
+  - id: capability.engineering.design-architecture
+    use_when:
+      - new automation notebooks or services
+      - ADR or technical design for data platform changes
+
+activated_packs:
+  - pack.engineering
+  - pack.fabric
+  - pack.platform
+  - pack.data
+
+activated_agents:
+  - agent.reviewer
+  - agent.sre
+  - agent.principal-data-engineer
+  - agent.architect
+
+maturity_filter: experimental
+confidence_minimum: Low
+exclude_research: true
+
+routing_hints:
+  tags:
+    - domain:data-platform
+    - domain:unity-catalog
+    - domain:fabric
+    - domain:observability
+    - lang:python
+    - lang:sql
+    - lang:hcl
+    - platform:databricks
+    - platform:microsoft-fabric
+    - platform:azure
+    - platform:newrelic
+    - vcs:azure-devops
+    - org:ab-inbev
+  globs:
+    - "notebooks/**/*.py"
+    - "pipelines/**/*.json"
+    - "pipelines/**/*.yaml"
+    - "unity-catalog/**/*.tfvars"
+    - "unity-catalog/**/*.yml"
+
+routing_rules:
+  - id: route.uc-pr-review
+    match:
+      triggers: [review PR, pull request, azure devops PR, revisar PR]
+    load:
+      capabilities: [capability.engineering.review-pr]
+  - id: route.fabric-capacity-nr
+    match:
+      triggers: [fabric capacity, eventhouse poller, fabric capacity metrics, capacity_metrics_sandbox]
+    load:
+      capabilities: [capability.fabric.monitoring, capability.platform.observability]
+  - id: route.newrelic-jobs
+    match:
+      triggers: [new relic job status, databricks job monitor, nr watermark]
+    load:
+      capabilities: [capability.platform.observability]
+  - id: route.uc-features
+    match:
+      triggers: [feature store, unity catalog features, personalization features]
+    load:
+      capabilities: [capability.data.feature-store]
+  - id: route.uc-onboarding
+    match:
+      triggers: [onboard domain, new catalog, terraform uc, tfvars]
+    load:
+      capabilities: [capability.engineering.design-architecture]
+
+compilation:
+  default_target: cursor
+  install_subpath: .cursor/rules/engineeringos
+  skills_subpath: .cursor/skills/engineeringos
+  capabilities:
+    - capability.engineering.review-pr
+    - capability.fabric.monitoring
+    - capability.platform.observability
+
+key_paths:
+  notebooks_root: notebooks/dw-unity-catalog-app
+  automation: notebooks/dw-unity-catalog-app/automation
+  fabric_powerbi: notebooks/dw-unity-catalog-app/automation/powerbi
+  new_relic: notebooks/dw-unity-catalog-app/automation/new_relic
+  workflows: pipelines/dw-unity-catalog-app/configs/databricks/am/workflows
+  unity_catalog_tf: unity-catalog/teams
+  onboarding_json: unity-catalog/test_new_onboarding_jsons
+
+overrides: []

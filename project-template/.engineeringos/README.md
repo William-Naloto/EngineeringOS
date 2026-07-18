@@ -1,17 +1,17 @@
 # Project Overlay
 
-> **Version:** 0.1.1
+> **Version:** 0.1.1  
+> **Important:** Overlays live in EngineeringOS only — never in consumer repositories.
 
-Copy to a consuming project's root as `.engineeringos/`.
+Consumer project mappings are stored under `project-overlays/<project-id>/` in the EngineeringOS repository. Use `scripts/install-project-cursor.sh` to install compiled Cursor rules locally without committing them to Azure DevOps or other consumer VCS.
 
-## Structure
+## Structure (in EngineeringOS repo)
 
 ```
-.engineeringos/
+project-overlays/<project-id>/
 ├── manifest.yaml       # Activated packs, agents, routing hints
 ├── context/            # Project architecture, conventions, glossary
-├── overrides/          # Per-artifact overrides by canonical ID
-└── local/              # Gitignored — developer-local extensions
+└── README.md           # Install instructions
 ```
 
 ## Manifest example
@@ -19,22 +19,20 @@ Copy to a consuming project's root as `.engineeringos/`.
 ```yaml
 engineeringos_version: "0.1.1"
 activated_packs:
-  - pack.foundation
+  - pack.fabric
 activated_agents:
   - agent.architect
   - agent.reviewer
-maturity_filter: stable
+maturity_filter: experimental
 routing_hints:
   tags: [domain:platform, lang:python]
-overrides:
-  - id: skill.foundation.code-review
-    path: overrides/skill.foundation.code-review.override.md
 ```
 
 ## Rules
 
-- **Do** add project conventions and routing hints
-- **Do not** duplicate global standards or pack skills — reference by ID
-- **Do not** commit secrets to `local/` or any tracked path
+- **Do** keep overlays in EngineeringOS `project-overlays/`
+- **Do** install Cursor bundles locally via `scripts/install-project-cursor.sh`
+- **Do not** add `.engineeringos/` or compiled rules to consumer repositories
+- **Do not** commit secrets anywhere
 
-See [ARCHITECTURE.md](../ARCHITECTURE.md#project-overlay).
+See [project-overlays/README.md](../../project-overlays/README.md).

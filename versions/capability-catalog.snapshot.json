@@ -1,0 +1,828 @@
+{
+  "generated_at": "2026-07-18T22:43:18.030Z",
+  "ekl_version": "1.0.0",
+  "release": "0.1.1",
+  "repository": "/Users/williamnaloto/Library/CloudStorage/OneDrive-Anheuser-BuschInBev/Clones/EngineeringOS",
+  "status": {
+    "repository": {
+      "root": "/Users/williamnaloto/Library/CloudStorage/OneDrive-Anheuser-BuschInBev/Clones/EngineeringOS",
+      "ekl_version": "1.0.0",
+      "release": "0.1.1",
+      "artifact_count": 44
+    },
+    "runtime": {
+      "phase": "ACTIVE",
+      "eor_version": "0.1.0"
+    },
+    "index": {
+      "built_at": "2026-07-18T22:43:18.015Z",
+      "entries": 44,
+      "types": {
+        "capability": 5,
+        "topic": 15,
+        "competency": 1,
+        "pack": 5,
+        "skill": 9,
+        "workflow": 1,
+        "agent": 8
+      }
+    }
+  },
+  "capabilities": {
+    "capabilities": [
+      {
+        "id": "capability.data.feature-store",
+        "type": "capability",
+        "version": "0.1.0",
+        "status": "experimental",
+        "lifecycle": "validated",
+        "owner": "Data Platform — GHQ B2B Delta",
+        "confidence": "Medium",
+        "path": "capabilities/data/feature-store.md",
+        "provides": [
+          "feature-store"
+        ]
+      },
+      {
+        "id": "capability.engineering.design-architecture",
+        "type": "capability",
+        "version": "0.1.0",
+        "status": "experimental",
+        "lifecycle": "validated",
+        "owner": "EngineeringOS Maintainers",
+        "confidence": "Medium",
+        "path": "capabilities/engineering/design-architecture.md",
+        "provides": [
+          "architecture-design",
+          "system-design"
+        ]
+      },
+      {
+        "id": "capability.engineering.review-pr",
+        "type": "capability",
+        "version": "0.1.0",
+        "status": "experimental",
+        "lifecycle": "validated",
+        "owner": "EngineeringOS Maintainers",
+        "confidence": "Medium",
+        "path": "capabilities/engineering/review-pr.md",
+        "provides": [
+          "code-review",
+          "pull-request-review"
+        ]
+      },
+      {
+        "id": "capability.fabric.monitoring",
+        "type": "capability",
+        "version": "0.1.0",
+        "status": "experimental",
+        "lifecycle": "validated",
+        "owner": "Data Platform — GHQ B2B Delta",
+        "confidence": "Medium",
+        "path": "capabilities/fabric/monitoring.md",
+        "provides": [
+          "fabric-monitoring"
+        ]
+      },
+      {
+        "id": "capability.platform.observability",
+        "type": "capability",
+        "version": "0.1.0",
+        "status": "experimental",
+        "lifecycle": "validated",
+        "owner": "Data Platform — GHQ B2B Delta",
+        "confidence": "Medium",
+        "path": "capabilities/platform/observability.md",
+        "provides": [
+          "platform-observability",
+          "newrelic-observability"
+        ]
+      }
+    ],
+    "total": 5
+  },
+  "competencies": {
+    "competencies": [
+      {
+        "id": "competency.principal-software-architect",
+        "version": "0.1.0",
+        "status": "draft",
+        "topic_count": 15,
+        "enables_capabilities": [
+          "capability.engineering.review-pr",
+          "capability.engineering.design-architecture"
+        ]
+      }
+    ],
+    "total": 1
+  },
+  "skills": {
+    "skills": [
+      {
+        "id": "skill.data.databricks-unity-catalog-features",
+        "type": "skill",
+        "version": "0.1.0",
+        "status": "draft",
+        "lifecycle": "created",
+        "owner": "Data Platform — GHQ B2B Delta",
+        "confidence": "Medium",
+        "path": "packs/data/skills/databricks-unity-catalog-features.md",
+        "provides": [
+          "databricks-development",
+          "feature-store"
+        ]
+      },
+      {
+        "id": "skill.data.feature-store-design",
+        "type": "skill",
+        "version": "0.1.0",
+        "status": "draft",
+        "lifecycle": "created",
+        "owner": "Data Platform — GHQ B2B Delta",
+        "confidence": "Medium",
+        "path": "packs/data/skills/feature-store-design.md",
+        "provides": [
+          "feature-store",
+          "feature-engineering"
+        ]
+      },
+      {
+        "id": "skill.engineering.cursor-compile",
+        "type": "skill",
+        "version": "0.1.0",
+        "status": "experimental",
+        "lifecycle": "validated",
+        "owner": "EngineeringOS Maintainers",
+        "confidence": "Medium",
+        "path": "packs/engineering/skills/cursor-compile.md",
+        "provides": [
+          "compile-cursor",
+          "cursor-rules"
+        ]
+      },
+      {
+        "id": "skill.engineering.engineeringos-setup",
+        "type": "skill",
+        "version": "0.1.0",
+        "status": "experimental",
+        "lifecycle": "validated",
+        "owner": "EngineeringOS Maintainers",
+        "confidence": "Medium",
+        "path": "packs/engineering/skills/engineeringos-setup.md",
+        "provides": [
+          "engineeringos-setup",
+          "mcp-setup",
+          "onboarding"
+        ]
+      },
+      {
+        "id": "skill.engineering.obsidian-export",
+        "type": "skill",
+        "version": "0.1.0",
+        "status": "experimental",
+        "lifecycle": "validated",
+        "owner": "EngineeringOS Maintainers",
+        "confidence": "Medium",
+        "path": "packs/engineering/skills/obsidian-export.md",
+        "provides": [
+          "obsidian-export",
+          "obsidian-vault",
+          "knowledge-vault"
+        ]
+      },
+      {
+        "id": "skill.fabric.monitoring-setup",
+        "type": "skill",
+        "version": "0.1.0",
+        "status": "draft",
+        "lifecycle": "created",
+        "owner": "Data Platform — GHQ B2B Delta",
+        "confidence": "Medium",
+        "path": "packs/fabric/skills/monitoring-setup.md",
+        "provides": [
+          "fabric-monitoring",
+          "fabric-telemetry"
+        ]
+      },
+      {
+        "id": "skill.fabric.pipeline-health-check",
+        "type": "skill",
+        "version": "0.1.0",
+        "status": "draft",
+        "lifecycle": "created",
+        "owner": "Data Platform — GHQ B2B Delta",
+        "confidence": "Medium",
+        "path": "packs/fabric/skills/pipeline-health-check.md",
+        "provides": [
+          "fabric-pipeline-diagnostics"
+        ]
+      },
+      {
+        "id": "skill.platform.newrelic-dashboard",
+        "type": "skill",
+        "version": "0.1.0",
+        "status": "draft",
+        "lifecycle": "created",
+        "owner": "Data Platform — GHQ B2B Delta",
+        "confidence": "Medium",
+        "path": "packs/platform/skills/newrelic-dashboard.md",
+        "provides": [
+          "newrelic-observability",
+          "platform-observability"
+        ]
+      },
+      {
+        "id": "skill.platform.slo-definition",
+        "type": "skill",
+        "version": "0.1.0",
+        "status": "draft",
+        "lifecycle": "created",
+        "owner": "Data Platform — GHQ B2B Delta",
+        "confidence": "Medium",
+        "path": "packs/platform/skills/slo-definition.md",
+        "provides": [
+          "slo-definition",
+          "platform-observability"
+        ]
+      }
+    ],
+    "total": 9
+  },
+  "graphs": {
+    "capability.data.feature-store": {
+      "nodes": [
+        {
+          "id": "skill.data.feature-store-design",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "skill.data.databricks-unity-catalog-features",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "skill.platform.slo-definition",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "capability.data.feature-store",
+          "type": "capability",
+          "version": "0.1.0",
+          "status": "experimental"
+        }
+      ],
+      "edges": [
+        {
+          "from": "capability.data.feature-store",
+          "to": "agent.principal-data-engineer",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.data.feature-store",
+          "to": "skill.data.feature-store-design",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.data.feature-store",
+          "to": "skill.data.databricks-unity-catalog-features",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.data.feature-store",
+          "to": "skill.platform.slo-definition",
+          "type": "orchestrates"
+        },
+        {
+          "from": "skill.data.databricks-unity-catalog-features",
+          "to": "skill.data.feature-store-design",
+          "type": "depends_on"
+        }
+      ]
+    },
+    "capability.engineering.design-architecture": {
+      "nodes": [
+        {
+          "id": "topic.architecture.communication",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.design-principles",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.anti-patterns",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.architecture-design",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.documentation",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.failure-modes",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.git-and-change",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.naming",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.security-architecture",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.system-decomposition",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.scalability",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.trade-off-analysis",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.adr-authoring",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.architecture-review",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.technology-selection",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "competency.principal-software-architect",
+          "type": "competency",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "capability.engineering.design-architecture",
+          "type": "capability",
+          "version": "0.1.0",
+          "status": "experimental"
+        }
+      ],
+      "edges": [
+        {
+          "from": "capability.engineering.design-architecture",
+          "to": "standard.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "capability.engineering.design-architecture",
+          "to": "competency.principal-software-architect",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.engineering.design-architecture",
+          "to": "agent.architect",
+          "type": "orchestrates"
+        },
+        {
+          "from": "topic.architecture.architecture-design",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.trade-off-analysis",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.adr-authoring",
+          "to": "topic.architecture.trade-off-analysis",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.system-decomposition",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.architecture-review",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.architecture-review",
+          "to": "topic.architecture.trade-off-analysis",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.technology-selection",
+          "to": "topic.architecture.trade-off-analysis",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.failure-modes",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.scalability",
+          "to": "topic.architecture.system-decomposition",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.anti-patterns",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        }
+      ]
+    },
+    "capability.engineering.review-pr": {
+      "nodes": [
+        {
+          "id": "topic.architecture.communication",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.design-principles",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.anti-patterns",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.architecture-design",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.documentation",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.failure-modes",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.git-and-change",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.naming",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.security-architecture",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.system-decomposition",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.scalability",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.trade-off-analysis",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.adr-authoring",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.architecture-review",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "topic.architecture.technology-selection",
+          "type": "topic",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "skill.engineering.cursor-compile",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "experimental"
+        },
+        {
+          "id": "competency.principal-software-architect",
+          "type": "competency",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "capability.engineering.review-pr",
+          "type": "capability",
+          "version": "0.1.0",
+          "status": "experimental"
+        }
+      ],
+      "edges": [
+        {
+          "from": "capability.engineering.review-pr",
+          "to": "standard.review.pull-request",
+          "type": "depends_on"
+        },
+        {
+          "from": "capability.engineering.review-pr",
+          "to": "standard.git.commit-messages",
+          "type": "depends_on"
+        },
+        {
+          "from": "capability.engineering.review-pr",
+          "to": "competency.principal-software-architect",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.engineering.review-pr",
+          "to": "agent.reviewer",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.engineering.review-pr",
+          "to": "skill.engineering.cursor-compile",
+          "type": "orchestrates"
+        },
+        {
+          "from": "topic.architecture.architecture-design",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.trade-off-analysis",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.adr-authoring",
+          "to": "topic.architecture.trade-off-analysis",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.system-decomposition",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.architecture-review",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.architecture-review",
+          "to": "topic.architecture.trade-off-analysis",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.technology-selection",
+          "to": "topic.architecture.trade-off-analysis",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.failure-modes",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.scalability",
+          "to": "topic.architecture.system-decomposition",
+          "type": "depends_on"
+        },
+        {
+          "from": "topic.architecture.anti-patterns",
+          "to": "topic.architecture.design-principles",
+          "type": "depends_on"
+        }
+      ]
+    },
+    "capability.fabric.monitoring": {
+      "nodes": [
+        {
+          "id": "skill.fabric.monitoring-setup",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "skill.fabric.pipeline-health-check",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "skill.platform.newrelic-dashboard",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "workflow.platform.incident-response",
+          "type": "workflow",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "capability.fabric.monitoring",
+          "type": "capability",
+          "version": "0.1.0",
+          "status": "experimental"
+        }
+      ],
+      "edges": [
+        {
+          "from": "capability.fabric.monitoring",
+          "to": "agent.sre",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.fabric.monitoring",
+          "to": "skill.fabric.monitoring-setup",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.fabric.monitoring",
+          "to": "skill.fabric.pipeline-health-check",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.fabric.monitoring",
+          "to": "skill.platform.newrelic-dashboard",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.fabric.monitoring",
+          "to": "workflow.platform.incident-response",
+          "type": "orchestrates"
+        },
+        {
+          "from": "skill.fabric.pipeline-health-check",
+          "to": "skill.fabric.monitoring-setup",
+          "type": "depends_on"
+        },
+        {
+          "from": "workflow.platform.incident-response",
+          "to": "skill.platform.newrelic-dashboard",
+          "type": "depends_on"
+        },
+        {
+          "from": "workflow.platform.incident-response",
+          "to": "skill.fabric.pipeline-health-check",
+          "type": "depends_on"
+        }
+      ]
+    },
+    "capability.platform.observability": {
+      "nodes": [
+        {
+          "id": "skill.fabric.monitoring-setup",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "skill.fabric.pipeline-health-check",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "skill.platform.newrelic-dashboard",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "skill.platform.slo-definition",
+          "type": "skill",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "workflow.platform.incident-response",
+          "type": "workflow",
+          "version": "0.1.0",
+          "status": "draft"
+        },
+        {
+          "id": "capability.platform.observability",
+          "type": "capability",
+          "version": "0.1.0",
+          "status": "experimental"
+        }
+      ],
+      "edges": [
+        {
+          "from": "capability.platform.observability",
+          "to": "agent.sre",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.platform.observability",
+          "to": "skill.platform.newrelic-dashboard",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.platform.observability",
+          "to": "skill.platform.slo-definition",
+          "type": "orchestrates"
+        },
+        {
+          "from": "capability.platform.observability",
+          "to": "workflow.platform.incident-response",
+          "type": "orchestrates"
+        },
+        {
+          "from": "workflow.platform.incident-response",
+          "to": "skill.platform.newrelic-dashboard",
+          "type": "depends_on"
+        },
+        {
+          "from": "workflow.platform.incident-response",
+          "to": "skill.fabric.pipeline-health-check",
+          "type": "depends_on"
+        },
+        {
+          "from": "skill.fabric.pipeline-health-check",
+          "to": "skill.fabric.monitoring-setup",
+          "type": "depends_on"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "capability_count": 5,
+    "experimental": 5,
+    "draft": 0
+  }
+}

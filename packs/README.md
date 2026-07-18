@@ -27,9 +27,11 @@ One day you will publish **only** the Fabric pack. Or only New Relic. Or only Py
 
 | Pack | ID | Status | Path |
 |------|-----|--------|------|
+| Microsoft Fabric | `pack.fabric` | Draft | [fabric/](fabric/) |
+| Engineering | `pack.engineering` | Draft | [engineering/](engineering/) |
+| Platform Observability | `pack.platform` | Draft | [platform/](platform/) |
+| Data & ML Features | `pack.data` | Draft | [data/](data/) |
 | _Template_ | `pack._template` | Reference only | [_template/](_template/) |
-
-No production packs yet. See [CAPABILITY_MATRIX.md](../CAPABILITY_MATRIX.md).
 
 ## Creating a pack
 

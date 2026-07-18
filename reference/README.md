@@ -27,12 +27,12 @@ The specification (`spec/`) is vendor-neutral. This directory contains **referen
 | OpenHands | `ai-context-agents` | [openhands/](openhands/) | Spec only |
 | Roo Code | `ai-context-rules` | [roo/](roo/) | Spec only |
 | Windsurf | `ai-context-rules` | [windsurf/](windsurf/) | Spec only |
+| Obsidian | `knowledge-vault` | [obsidian/](obsidian/) | Spec only |
 
 ## Planned reference targets
 
 | Target | EKL abstract target |
 |--------|-------------------|
-| Obsidian | `knowledge-vault` |
 | NotebookLM | `knowledge-vault` |
 | MkDocs / Docusaurus | `documentation-site` |
 | Confluence | `wiki` |

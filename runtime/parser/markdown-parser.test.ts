@@ -84,11 +84,12 @@ describe('MarkdownParser', () => {
 
     assert.equal(result.node.contract.id, 'capability.engineering.review-pr');
     assert.equal(result.node.type, 'capability');
+    assert.equal(result.node.contract.status, 'experimental');
     assert.ok(result.node.contract.orchestrates?.competencies?.includes(
       'competency.principal-software-architect',
     ));
     assert.ok(result.node.body.headings.includes('Purpose'));
-    assert.equal(result.node.evidence.entries.length, 0);
+    assert.ok(result.node.evidence.entries.length >= 3);
     assert.ok(result.durationMs >= 0);
   });
 

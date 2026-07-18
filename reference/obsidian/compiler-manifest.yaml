@@ -1,0 +1,42 @@
+# Obsidian reference compiler manifest
+# @see reference/obsidian/README.md
+
+target_id: obsidian
+ekl_abstract_target: knowledge-vault
+compiler_version: 0.0.0-draft
+ekl_version: "1.0"
+
+supported_features:
+  - vault-notes
+  - wikilinks
+  - frontmatter-preservation
+  - dataview-dashboards
+  - mermaid-diagrams
+  - templates
+  - capability-slice-export
+
+output_paths:
+  capabilities: Capabilities/
+  competencies: Competencies/
+  topics: Competencies/
+  agents: Agents/
+  skills: Skills/
+  standards: Standards/
+  adrs: ADRs/
+  packs: Packs/
+  indexes: _index/
+  templates: _templates/
+  research: Research/
+
+defaults:
+  min_status: experimental
+  min_confidence: Low
+  exclude_research: true
+  inject_wikilinks: true
+  generate_dataview_indexes: true
+
+plugins_recommended:
+  - dataview
+  - templater
+  - obsidian-git
+  - mermaid

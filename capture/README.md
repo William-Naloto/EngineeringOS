@@ -1,11 +1,35 @@
 # Capture Pipeline
 
-> **Status:** Placeholder (v0.1.1)  
+> **Status:** Operational (MVP v0.1.1)  
 > **Classification:** Recommendation
 
 The capture pipeline is how **projects improve EngineeringOS** over time. It transforms real engineering experience into validated, contract-compliant knowledge.
 
-## Pipeline stages
+## Operational commands
+
+### CLI
+
+```bash
+npm run capture -- status
+npm run capture -- list
+npm run capture -- learn --title "Fabric alert tuning" --vendor microsoft --domain fabric --project "GHQ B2B Delta"
+npm run capture -- review --path research/microsoft/fabric/2026-07-13-topic.md --outcome approved --reviewer "Your Name"
+npm run capture -- extract --path research/... --artifact-id skill.fabric.alert-tuning --type skill --pack fabric
+```
+
+### MCP
+
+```
+engineeringos.capture action=status
+engineeringos.capture action=list
+engineeringos.capture action=learn title="..." vendor=engineering domain=review
+engineeringos.capture action=review path=research/... outcome=approved
+engineeringos.capture action=extract path=research/... artifact_id=skill.engineering.foo type=skill pack=engineering
+```
+
+Draft artifacts land in `research/drafts/` — never auto-promote to `packs/` or `stable`.
+
+---
 
 ```
 Project experience

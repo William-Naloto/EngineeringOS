@@ -1,0 +1,24 @@
+id: pack.engineering
+version: "0.1.0"
+status: draft
+lifecycle: created
+owner: EngineeringOS Maintainers
+classification: Recommendation
+confidence: Medium
+dependencies: []
+provides:
+  - compile-cursor
+  - code-review
+requires:
+  - cursor
+references:
+  - reference/cursor/README.md
+updated: 2026-07-14
+reviewed: 2026-07-14
+modules:
+  - id: skill.engineering.cursor-compile
+    version: "0.1.0"
+  - id: skill.engineering.obsidian-export
+    version: "0.1.0"
+  - id: skill.engineering.engineeringos-setup
+    version: "0.1.0"

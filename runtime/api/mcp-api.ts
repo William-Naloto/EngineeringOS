@@ -4,7 +4,7 @@ import type { McpApi, ToolName, ToolResponse } from './interfaces.ts';
 import { failure } from './response.ts';
 
 export class EngineeringOsMcpApi implements McpApi {
-  readonly tools = createToolHandlers();
+  readonly tools = createToolHandlers() as McpApi['tools'];
   private readonly context: EorContext;
 
   constructor(context: EorContext) {

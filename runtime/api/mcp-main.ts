@@ -14,6 +14,10 @@
 import { createEngineeringOsRuntime } from './runtime.ts';
 import { getToolDescription } from './handlers.ts';
 import type { ToolName } from './interfaces.ts';
+import {
+  CallToolRequestSchema,
+  ListToolsRequestSchema,
+} from '@modelcontextprotocol/sdk/types.js';
 
 async function main(): Promise<void> {
   const repositoryRoot = process.env.ENGINEERINGOS_ROOT ?? process.cwd();
@@ -47,37 +51,24 @@ async function main(): Promise<void> {
     },
   );
 
-  server.setRequestHandler(
-    { method: 'tools/list' } as never,
-    async () => ({
-      tools: api.listTools().map((name) => ({
-        name,
-        description: getToolDescription(name),
-        inputSchema: {
-          type: 'object',
-          additionalProperties: true,
-        },
-      })),
-    }),
-  );
+  server.setRequestHandler(ListToolsRequestSchema, async () => ({
+    tools: api.listTools().map((name) => ({
+      name,
+      description: getToolDescription(name),
+      inputSchema: {
+        type: 'object',
+        additionalProperties: true,
+      },
+    })),
+  }));
 
-  server.setRequestHandler(
-    { method: 'tools/call' } as never,
-    async (request: { params: { name: string; arguments?: Record<string, unknown> } }) => {
-      const response = await api.invoke(request.params.name as ToolName, request.params.arguments ?? {});
+  server.setRequestHandler(CallToolRequestSchema, async (request) => {
+    const response = await api.invoke(
+      request.params.name as ToolName,
+      request.params.arguments ?? {},
+    );
 
-      if (!response.ok) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify(response, null, 2),
-            },
-          ],
-          isError: true,
-        };
-      }
-
+    if (!response.ok) {
       return {
         content: [
           {
@@ -85,9 +76,19 @@ async function main(): Promise<void> {
             text: JSON.stringify(response, null, 2),
           },
         ],
+        isError: true,
       };
-    },
-  );
+    }
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(response, null, 2),
+        },
+      ],
+    };
+  });
 
   const transport = new StdioServerTransport();
   await server.connect(transport);

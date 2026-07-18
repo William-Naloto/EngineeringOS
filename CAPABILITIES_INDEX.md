@@ -1,8 +1,8 @@
 # Capabilities Index
 
 > **Version:** 0.1.1-RC1  
-> **Last updated:** 2026-07-12  
-> **Total capabilities:** 5 (0 stable)
+> **Last updated:** 2026-07-13  
+> **Total capabilities:** 5 (5 experimental)
 
 Registry of capability artifacts — orchestration recipes the router loads **first**.
 
@@ -33,26 +33,26 @@ For coverage status, see [CAPABILITY_MATRIX.md](CAPABILITY_MATRIX.md).
 
 | id | title | version | status | confidence | provides | path |
 |----|-------|---------|--------|------------|----------|------|
-| capability.engineering.review-pr | Review Pull Request | 0.1.0 | draft | Unknown | code-review, pull-request-review | capabilities/engineering/review-pr.md |
-| capability.engineering.design-architecture | Design Architecture | 0.1.0 | draft | Unknown | architecture-design, system-design | capabilities/engineering/design-architecture.md |
+| capability.engineering.review-pr | Review Pull Request | 0.1.0 | experimental | Medium | code-review, pull-request-review | capabilities/engineering/review-pr.md |
+| capability.engineering.design-architecture | Design Architecture | 0.1.0 | experimental | Medium | architecture-design, system-design | capabilities/engineering/design-architecture.md |
 
 ### fabric
 
 | id | title | version | status | confidence | provides | path |
 |----|-------|---------|--------|------------|----------|------|
-| capability.fabric.monitoring | Fabric Monitoring | 0.1.0 | draft | Unknown | fabric-monitoring | capabilities/fabric/monitoring.md |
+| capability.fabric.monitoring | Fabric Monitoring | 0.1.0 | experimental | Medium | fabric-monitoring | capabilities/fabric/monitoring.md |
 
 ### platform
 
 | id | title | version | status | confidence | provides | path |
 |----|-------|---------|--------|------------|----------|------|
-| capability.platform.observability | Platform Observability | 0.1.0 | draft | Unknown | platform-observability | capabilities/platform/observability.md |
+| capability.platform.observability | Platform Observability | 0.1.0 | experimental | Medium | platform-observability | capabilities/platform/observability.md |
 
 ### data
 
 | id | title | version | status | confidence | provides | path |
 |----|-------|---------|--------|------------|----------|------|
-| capability.data.feature-store | Feature Store | 0.1.0 | draft | Unknown | feature-store | capabilities/data/feature-store.md |
+| capability.data.feature-store | Feature Store | 0.1.0 | experimental | Medium | feature-store | capabilities/data/feature-store.md |
 
 ---
 
@@ -61,8 +61,8 @@ For coverage status, see [CAPABILITY_MATRIX.md](CAPABILITY_MATRIX.md).
 | Status | Count |
 |--------|-------|
 | stable | 0 |
-| experimental | 0 |
-| draft | 5 |
+| experimental | 5 |
+| draft | 0 |
 | deprecated | 0 |
 
 ---

@@ -49,14 +49,15 @@ At scale, this graph is **auto-generated** from Knowledge Contract `dependencies
 standard.architecture.design-principles
 standard.documentation.structure
          │
-         ├──── skill.fabric.monitoring-setup (TBD)
-         ├──── skill.newrelic.dashboard (TBD)
+         ├──── skill.fabric.monitoring-setup
+         ├──── skill.fabric.pipeline-health-check
+         ├──── skill.platform.newrelic-dashboard
          │
          ▼
 capability.fabric.monitoring
          │
          ├── agent.sre
-         └── workflow.platform.incident-response (TBD)
+         └── workflow.platform.incident-response
 ```
 
 ---

@@ -45,6 +45,6 @@ export interface RouterConfig {
  */
 export interface Router {
   route(context: RouteContext, config?: RouterConfig): Promise<RouteResult>;
-  matchCapabilities(context: RouteContext): Promise<ArtifactId[]>;
-  matchByType(type: ArtifactType, filter?: RouteContext): Promise<ArtifactId[]>;
+  matchCapabilities(context: RouteContext, config?: RouterConfig): Promise<ArtifactId[]>;
+  matchByType(type: ArtifactType, filter?: RouteContext, config?: RouterConfig): Promise<ArtifactId[]>;
 }

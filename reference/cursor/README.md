@@ -4,7 +4,7 @@
 > **ekl_abstract_target:** `ai-context-rules`  
 > **compiler_version:** 0.0.0-draft  
 > **ekl_version:** 1.0  
-> **Status:** Specification only — not implemented
+> **Status:** Specification + MVP runtime compiler (`runtime/compiler/cursor/`)
 
 Implements EKL v1 for the Cursor IDE. See [spec/specification.md](../../spec/specification.md).
 
@@ -48,7 +48,9 @@ alwaysApply: false
 
 ## Implementation
 
-`compilers/cursor/` (when built)
+Runtime compiler: `runtime/compiler/cursor/`  
+CLI: `npm run export:cursor`  
+MCP: `engineeringos.compile { target: "cursor", capability: "..." }`
 
 ## References
 

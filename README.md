@@ -56,7 +56,7 @@ EngineeringOS/
 | v0.1.1 platform frozen | ✅ [GitHub](https://github.com/William-Naloto/EngineeringOS/releases/tag/v0.1.1) |
 | EKL specification | ✅ Draft |
 | Standards alignment | 🚧 Current |
-| Compiler implementation | ⏸ Paused |
+| Compiler implementation | ✅ Obsidian + Cursor MVP |
 
 ---
 

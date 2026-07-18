@@ -15,7 +15,7 @@ describe('EngineeringOsMcpApi', () => {
     assert.ok(tools.includes('engineeringos.status'));
     assert.ok(tools.includes('engineeringos.review'));
     assert.ok(tools.includes('engineeringos.compile'));
-    assert.equal(tools.length, 19);
+    assert.equal(tools.length, 20);
     await runtime.shutdown();
   });
 
@@ -69,15 +69,70 @@ describe('EngineeringOsMcpApi', () => {
     await runtime.shutdown();
   });
 
-  it('returns NOT_IMPLEMENTED for compile', async () => {
+  it('returns NOT_IMPLEMENTED for claude compile', async () => {
     const runtime = await createEngineeringOsRuntime(repoRoot);
     const response = await runtime.api.invoke('engineeringos.compile', {
-      target: 'cursor',
+      target: 'claude',
       capability: 'capability.engineering.review-pr',
     });
 
     assert.equal(response.ok, false);
     assert.equal(response.error?.code, 'NOT_IMPLEMENTED');
+    await runtime.shutdown();
+  });
+
+  it('compiles cursor capability bundle', async () => {
+    const runtime = await createEngineeringOsRuntime(repoRoot);
+    const response = await runtime.api.invoke('engineeringos.compile', {
+      target: 'cursor',
+      capability: 'capability.fabric.monitoring',
+    });
+
+    assert.equal(response.ok, true);
+    const data = response.data as { artifacts_compiled: number; output_dir: string };
+    assert.equal(data.output_dir.includes('capability-fabric-monitoring'), true);
+    assert.ok(data.artifacts_compiled >= 8);
+    await runtime.shutdown();
+  });
+
+  it('exports obsidian vault', async () => {
+    const runtime = await createEngineeringOsRuntime(repoRoot);
+    const outputDir = join(repoRoot, 'dist', 'test-obsidian-export');
+    const response = await runtime.api.invoke('engineeringos.export', {
+      target: 'obsidian',
+      scope: 'all',
+      output_dir: outputDir,
+    });
+
+    assert.equal(response.ok, true);
+    const data = response.data as { files_written: number; output_files: string[] };
+    assert.ok(data.files_written >= 40);
+    assert.ok(data.output_files.includes('Capabilities/fabric/monitoring.md'));
+    await runtime.shutdown();
+  });
+
+  it('compiles obsidian capability slice', async () => {
+    const runtime = await createEngineeringOsRuntime(repoRoot);
+    const response = await runtime.api.invoke('engineeringos.compile', {
+      target: 'obsidian',
+      capability: 'capability.fabric.monitoring',
+    });
+
+    assert.equal(response.ok, true);
+    const data = response.data as { artifacts_compiled: number; capability: string };
+    assert.equal(data.capability, 'capability.fabric.monitoring');
+    assert.ok(data.artifacts_compiled >= 5);
+    await runtime.shutdown();
+  });
+
+  it('runs capture pipeline status', async () => {
+    const runtime = await createEngineeringOsRuntime(repoRoot);
+    const response = await runtime.api.invoke('engineeringos.capture', { action: 'status' });
+
+    assert.equal(response.ok, true);
+    const data = response.data as { research_notes: number; pipeline: string[] };
+    assert.ok(data.research_notes >= 1);
+    assert.deepEqual(data.pipeline, ['learn', 'review', 'extract', 'publish']);
     await runtime.shutdown();
   });
 

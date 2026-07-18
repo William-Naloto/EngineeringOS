@@ -6,8 +6,15 @@
   "description": "EngineeringOS Runtime — EKL parser and MCP server",
   "scripts": {
     "build": "tsc",
-    "test": "node --experimental-strip-types --test runtime/parser/markdown-parser.test.ts runtime/validator/ekl-validator.test.ts runtime/resolver/dependency-resolver.test.ts runtime/router/capability-router.test.ts runtime/api/graph-edges.test.ts runtime/api/mcp-api.test.ts",
-    "mcp": "node --experimental-strip-types runtime/api/mcp-main.ts"
+    "test": "node --experimental-strip-types --test runtime/parser/markdown-parser.test.ts runtime/validator/ekl-validator.test.ts runtime/resolver/dependency-resolver.test.ts runtime/router/capability-router.test.ts runtime/api/graph-edges.test.ts runtime/api/mcp-api.test.ts runtime/compiler/obsidian/obsidian-compiler.test.ts runtime/compiler/cursor/cursor-compiler.test.ts runtime/capture/capture-service.test.ts",
+    "mcp": "node --experimental-strip-types runtime/api/mcp-main.ts",
+    "catalog": "node --experimental-strip-types scripts/catalog-capabilities.ts",
+    "export:obsidian": "node --experimental-strip-types scripts/export-obsidian.ts",
+    "export:cursor": "node --experimental-strip-types scripts/export-cursor.ts",
+    "capture": "node --experimental-strip-types scripts/capture.ts",
+    "setup": "bash scripts/setup.sh",
+    "setup:obsidian": "bash scripts/setup-obsidian.sh",
+    "setup:mcp": "bash scripts/setup-cursor-mcp.sh"
   },
   "engines": {
     "node": ">=20"

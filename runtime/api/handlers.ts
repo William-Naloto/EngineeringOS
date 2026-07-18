@@ -29,6 +29,10 @@ import {
   timed,
 } from './response.ts';
 import { toApiGraphEdgeType, dedupeGraphEdges } from './graph-edges.ts';
+import { runExport, ExportNotImplementedError, ExportUnsupportedTargetError } from '../compiler/export-service.ts';
+import { runCompile, CompileNotImplementedError } from '../compiler/compile-service.ts';
+import { runCapture, CaptureError } from '../capture/capture-service.ts';
+import type { CompilerTargetId } from '../compiler/interfaces.ts';
 
 type Handler = (ctx: EorContext, input: Record<string, unknown>) => Promise<ToolResponse<unknown>>;
 
@@ -52,6 +56,7 @@ const TOOL_DESCRIPTIONS: Record<ToolName, string> = {
   'engineeringos.evidence': 'Return evidence chain for an artifact',
   'engineeringos.snapshot': 'Generate consultant snapshot for a capability',
   'engineeringos.export': 'Export documentation for a compiler target',
+  'engineeringos.capture': 'Run capture pipeline: learn, list, review, extract, status',
 };
 
 export function createToolHandlers(): Map<ToolName, Handler> {
@@ -63,7 +68,7 @@ export function createToolHandlers(): Map<ToolName, Handler> {
   handlers.set('engineeringos.skills', handleSkills);
   handlers.set('engineeringos.find', handleFind);
   handlers.set('engineeringos.review', handleReview);
-  handlers.set('engineeringos.compile', handleNotImplemented('Compiler layer'));
+  handlers.set('engineeringos.compile', handleCompile);
   handlers.set('engineeringos.dependencies', handleDependencies);
   handlers.set('engineeringos.roadmap', handleRoadmap);
   handlers.set('engineeringos.progress', handleProgress);
@@ -75,7 +80,8 @@ export function createToolHandlers(): Map<ToolName, Handler> {
   handlers.set('engineeringos.owner', handleOwner);
   handlers.set('engineeringos.evidence', handleEvidence);
   handlers.set('engineeringos.snapshot', handleSnapshot);
-  handlers.set('engineeringos.export', handleNotImplemented('Export compiler'));
+  handlers.set('engineeringos.export', handleExport);
+  handlers.set('engineeringos.capture', handleCapture);
 
   return handlers;
 }
@@ -374,7 +380,7 @@ async function handleDependencies(
     return failure('INVALID_INPUT', 'id is required', 0);
   }
 
-  const { result, durationMs } = await timed(async () => {
+  const timedResult = await timed(async () => {
     const depth = asNumber(pickInput(input, 'depth', 'depth'), -1);
     const direction = asString(pickInput(input, 'direction', 'direction')) ?? 'downstream';
 
@@ -416,11 +422,11 @@ async function handleDependencies(
     throw error;
   });
 
-  if (!result) {
+  if (!timedResult) {
     return failure('NOT_FOUND', `Artifact not found: ${id}`, 0);
   }
 
-  return success(result, durationMs, result.nodes.length);
+  return success(timedResult.result, timedResult.durationMs, timedResult.result.nodes.length);
 }
 
 async function handleRoadmap(ctx: EorContext): Promise<ToolResponse<unknown>> {
@@ -561,7 +567,11 @@ async function handleGraph(
       })),
     );
 
-    const response: Record<string, unknown> = { nodes, edges };
+    const response: {
+      nodes: Array<{ id: string; type: string; version: string; status: string }>;
+      edges: Array<{ from: string; to: string; type: string }>;
+      mermaid?: string;
+    } = { nodes, edges };
     if (format === 'mermaid') {
       response.mermaid = toMermaid(nodes, edges);
     }
@@ -671,7 +681,7 @@ async function handlePack(
     return failure('INVALID_INPUT', 'id is required', 0);
   }
 
-  const { result, durationMs } = await timed(async () => {
+  const timedResult = await timed(async () => {
     const includeArtifacts = asBoolean(
       pickInput(input, 'includeArtifacts', 'include_artifacts'),
       true,
@@ -727,11 +737,16 @@ async function handlePack(
     return response;
   }).catch(() => null);
 
-  if (!result) {
+  if (!timedResult) {
     return failure('NOT_FOUND', `Pack not found: ${id}`, 0);
   }
 
-  return success(result, durationMs);
+  const artifacts = timedResult.result.artifacts;
+  return success(
+    timedResult.result,
+    timedResult.durationMs,
+    Array.isArray(artifacts) ? artifacts.length : undefined,
+  );
 }
 
 async function handleOwner(
@@ -783,7 +798,7 @@ async function handleEvidence(
 
   const transitive = asBoolean(pickInput(input, 'transitive', 'transitive'), false);
 
-  const { result, durationMs } = await timed(async () => {
+  const timedResult = await timed(async () => {
     const node = await ctx.requireStore().load(id);
     if (!node) {
       throw new Error('NOT_FOUND');
@@ -823,11 +838,11 @@ async function handleEvidence(
     };
   }).catch(() => null);
 
-  if (!result) {
+  if (!timedResult) {
     return failure('NOT_FOUND', `Artifact not found: ${id}`, 0);
   }
 
-  return success(result, durationMs);
+  return success(timedResult.result, timedResult.durationMs);
 }
 
 async function handleSnapshot(
@@ -905,6 +920,101 @@ async function handleSnapshot(
   });
 
   return success(result, durationMs, result.artifacts_included);
+}
+
+async function handleCompile(
+  ctx: EorContext,
+  input: Record<string, unknown>,
+): Promise<ToolResponse<unknown>> {
+  const target = asString(pickInput(input, 'target', 'target')) as CompilerTargetId | undefined;
+  const capability = asString(pickInput(input, 'capability', 'capability'));
+  const outputDir = asString(pickInput(input, 'outputDir', 'output_dir'));
+
+  if (!target) {
+    return failure('INVALID_INPUT', 'target is required', 0);
+  }
+  if (!capability) {
+    return failure('INVALID_INPUT', 'capability is required', 0);
+  }
+
+  try {
+    const { result, durationMs } = await timed(async () =>
+      runCompile(ctx, {
+        target,
+        capability,
+        outputDir,
+        minStatus: (asString(pickInput(input, 'minStatus', 'min_status')) ?? 'draft') as never,
+      }),
+    );
+
+    return success(result, durationMs, result.artifacts_compiled);
+  } catch (error) {
+    if (error instanceof CompileNotImplementedError) {
+      return failure('NOT_IMPLEMENTED', error.message, 0);
+    }
+    throw error;
+  }
+}
+
+async function handleExport(
+  ctx: EorContext,
+  input: Record<string, unknown>,
+): Promise<ToolResponse<unknown>> {
+  const target = asString(pickInput(input, 'target', 'target')) as CompilerTargetId | undefined;
+
+  if (!target) {
+    return failure('INVALID_INPUT', 'target is required', 0);
+  }
+
+  try {
+    const minStatusRaw = asString(pickInput(input, 'minStatus', 'min_status'));
+    const { result, durationMs } = await timed(async () =>
+      runExport(ctx, {
+        target,
+        scope: (asString(pickInput(input, 'scope', 'scope')) ?? 'all') as 'all' | 'pack' | 'capability',
+        pack: asString(pickInput(input, 'pack', 'pack')),
+        capability: asString(pickInput(input, 'capability', 'capability')),
+        outputDir: asString(pickInput(input, 'outputDir', 'output_dir')),
+        ...(minStatusRaw ? { minStatus: minStatusRaw as never } : {}),
+      }),
+    );
+
+    return success(result, durationMs, result.files_written);
+  } catch (error) {
+    if (error instanceof ExportNotImplementedError || error instanceof ExportUnsupportedTargetError) {
+      return failure('NOT_IMPLEMENTED', error.message, 0);
+    }
+    throw error;
+  }
+}
+
+async function handleCapture(
+  ctx: EorContext,
+  input: Record<string, unknown>,
+): Promise<ToolResponse<unknown>> {
+  const action = asString(pickInput(input, 'action', 'action')) as
+    | 'learn'
+    | 'list'
+    | 'review'
+    | 'extract'
+    | 'status'
+    | undefined;
+
+  if (!action) {
+    return failure('INVALID_INPUT', 'action is required (learn|list|review|extract|status)', 0);
+  }
+
+  try {
+    const { result, durationMs } = await timed(async () =>
+      runCapture(ctx.repositoryRoot, action, input),
+    );
+    return success(result, durationMs);
+  } catch (error) {
+    if (error instanceof CaptureError) {
+      return failure('INVALID_INPUT', error.message, 0);
+    }
+    throw error;
+  }
 }
 
 function handleNotImplemented(feature: string): Handler {

@@ -113,6 +113,72 @@ releases/v0.1.1-RC1.md ── Release candidate checklist
 
 ## Current state
 
-**v0.1.1-RC1** — platform architecture only. No production knowledge yet.
+**v0.1.1** — platform architecture with working MCP runtime and Obsidian/Cursor compilers.
 
-Do not tag until [releases/v0.1.1-RC1.md](releases/v0.1.1-RC1.md) is signed off.
+| Component | Status |
+|-----------|--------|
+| MCP server (`npm run mcp`) | ✅ Ready |
+| Obsidian export (`npm run export:obsidian`) | ✅ Ready |
+| Cursor compile (`npm run export:cursor`) | ✅ Ready |
+| Knowledge artifacts | 5 experimental capabilities, 4 packs, 7 skills |
+
+---
+
+## Setup (5 minutes)
+
+### Prerequisites
+
+- Node.js ≥ 20
+- [Obsidian](https://obsidian.md/) (for vault browsing)
+- [Cursor](https://cursor.com/) (for MCP integration)
+
+### Quick setup
+
+```bash
+git clone <repo-url> EngineeringOS
+cd EngineeringOS
+npm run setup          # installs deps, configures MCP, exports Obsidian vault
+```
+
+Or step by step:
+
+```bash
+npm install
+npm test
+npm run setup:mcp      # Cursor MCP only
+npm run setup:obsidian # Obsidian vault export only
+```
+
+### Obsidian integration
+
+1. Export the vault:
+   ```bash
+   npm run export:obsidian
+   ```
+2. Open Obsidian → **File → Open folder as vault**
+3. Select `dist/obsidian-vault/`
+4. Install plugins: **Dataview**, **Templater**, **Obsidian Git**, **Mermaid**
+5. Start from `_index/CAPABILITIES.md` or the vault `README.md`
+
+Re-export after editing canonical knowledge in `capabilities/`, `packs/`, etc.
+
+Environment variables (optional — copy `.env.example` to `.env`):
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `OBSIDIAN_OUTPUT_DIR` | `dist/obsidian-vault` | Vault output path |
+| `OBSIDIAN_SCOPE` | `all` | `all`, `pack`, or `capability` |
+| `OBSIDIAN_CAPABILITY` | — | Capability slice ID |
+| `OBSIDIAN_MIN_STATUS` | `experimental` | Minimum artifact status |
+
+### Cursor MCP integration
+
+MCP config lives in `.cursor/mcp.json`. After setup, reload Cursor and verify:
+
+```
+engineeringos.status
+engineeringos.capabilities
+engineeringos.export { target: "obsidian" }
+```
+
+See [reference/obsidian/README.md](reference/obsidian/README.md) for vault layout spec.

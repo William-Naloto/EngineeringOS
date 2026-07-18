@@ -1,0 +1,23 @@
+id: pack.data
+version: "0.1.0"
+status: draft
+lifecycle: created
+owner: Data Platform — GHQ B2B Delta
+classification: Recommendation
+confidence: Medium
+dependencies: []
+provides:
+  - feature-store
+  - databricks-development
+requires:
+  - databricks
+  - spark
+references:
+  - https://docs.databricks.com/en/machine-learning/feature-store/index.html
+updated: 2026-07-13
+reviewed: null
+modules:
+  - id: skill.data.feature-store-design
+    version: "0.1.0"
+  - id: skill.data.databricks-unity-catalog-features
+    version: "0.1.0"

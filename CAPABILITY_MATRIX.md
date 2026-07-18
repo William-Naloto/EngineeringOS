@@ -1,7 +1,7 @@
 # Capability Matrix
 
 > **Version:** 0.1.1-RC1  
-> **Last updated:** 2026-07-12  
+> **Last updated:** 2026-07-13  
 > **Note:** Manual during RC1. Auto-generated from `provides` tokens at v0.2 (ADR 0012).
 
 The Capability Matrix is the **single pane of glass** for EngineeringOS coverage. Instead of asking "what skills do we have?", agents and humans read this matrix.
@@ -27,11 +27,11 @@ Each capability maps to `provides` tokens declared in artifact Knowledge Contrac
 
 | Capability | Status | Provides token | Pack / Source | Notes |
 |------------|--------|----------------|---------------|-------|
-| Architecture | ❌ | `architecture-review` | — | Standards planned |
+| Architecture | 🚧 | `architecture-design` | `capability.engineering.design-architecture` | Experimental — competency wired |
 | Documentation | ❌ | `documentation` | — | Standards planned |
 | Naming conventions | ❌ | `naming` | — | Standards planned |
 | Git workflow | ❌ | `git-workflow` | — | Standards planned |
-| Code review | ❌ | `code-review` | — | Standards planned |
+| Code review | 🚧 | `code-review` | `capability.engineering.review-pr` | Experimental — competency wired |
 
 ---
 
@@ -42,11 +42,11 @@ Each capability maps to `provides` tokens declared in artifact Knowledge Contrac
 | Python | ❌ | `python-development` | `pack.python` (planned) | — |
 | SQL | ❌ | `sql-development` | — | — |
 | Spark | ❌ | `spark-development` | — | — |
-| Fabric | ❌ | `fabric-development` | `pack.fabric` (planned) | — |
+| Fabric | 🚧 | `fabric-development` | `pack.fabric` | 2 skills — monitoring |
 | Power BI | ❌ | `powerbi-reporting` | `pack.fabric` (planned) | — |
-| Databricks | ❌ | `databricks-development` | — | — |
+| Databricks | 🚧 | `databricks-development` | `pack.data` | Feature store skills |
 | Azure | ❌ | `azure-infrastructure` | — | — |
-| New Relic | ❌ | `newrelic-observability` | — | — |
+| New Relic | 🚧 | `newrelic-observability` | `pack.platform` | Dashboard + SLO skills |
 
 ---
 
@@ -67,11 +67,12 @@ Index: [CAPABILITIES_INDEX.md](CAPABILITIES_INDEX.md)
 | Capability | Status | Provides token | Source | Notes |
 |------------|--------|----------------|--------|-------|
 | Knowledge contracts | 🚧 | `knowledge-contract` | `KNOWLEDGE_CONTRACT.md` | v0.1.1-RC1 |
-| Compilation (Cursor) | ❌ | `compile-cursor` | `compilers/` | Planned v0.5 |
+| Compilation (Cursor) | 🚧 | `compile-cursor` | `pack.engineering` / `runtime/compiler/cursor/` | MVP + delivery skill |
+| Compilation (Obsidian) | 🚧 | `compile-obsidian` | `runtime/compiler/obsidian/` | MVP implemented |
 | Compilation (Claude) | ❌ | `compile-claude` | `compilers/` | Planned v0.5 |
 | Compilation (Copilot) | ❌ | `compile-copilot` | `compilers/` | Planned v0.5 |
 | Validation pipeline | 🚧 | `validation` | `validation/` | Structure defined |
-| Research capture | 🚧 | `knowledge-capture` | `capture/` | Pipeline defined |
+| Research capture | 🚧 | `knowledge-capture` | `capture/` + MCP `engineeringos.capture` | MVP operational |
 | Agent personas | 🚧 | `agent-persona` | `agents/` | Placeholders only |
 
 ---
